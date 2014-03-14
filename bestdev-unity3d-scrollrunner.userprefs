@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Runner\Runner.cs">
+    <Files>
+      <File FileName="Assets\Runner\Runner.cs" Line="88" Column="37" />
+      <File FileName="Assets\Debug.cs" Line="74" Column="73" />
+      <File FileName="Assets\Tile\TileManager.cs" Line="82" Column="33" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
