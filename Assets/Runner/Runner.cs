@@ -3,17 +3,15 @@ using System.Collections;
 
 public class Runner : MonoBehaviour
 {
-	public static int nScrollFlag = 1;	// 0 : 횡스크롤, 1 : 종스크롤
 	public static float distanceTraveled;
 	public Vector3 chrSize;
-	public float runSpeed = 30;
-
-	public float acceleration = 30;
-	public Vector3 jumpVelocity;
+	public float runSpeed = 10;
+	public float keySensitivity = 3;	// 1 : Fast, 3 : Slow
+	public float jumpPower = 10;
 
 	public GUIText guitext;
 
-	private bool touchingTile;
+	private bool touchingTile = true;
 
 	// Use this for initialization
 	void Start ()
@@ -35,22 +33,17 @@ public class Runner : MonoBehaviour
 		// if(Input.GetKeyUp(KeyCode.PageUp))
 		if(Input.GetAxis("Mouse ScrollWheel") > 0)
 		{
-			runSpeed += 10;
-			acceleration += 10;
+			runSpeed += 1;
 		}
 
 		// if(Input.GetKeyUp(KeyCode.mou.PageDown))
 		if(Input.GetAxis("Mouse ScrollWheel") < 0)
 		{
-			runSpeed -= 10;
-			acceleration -= 10;
+			runSpeed -= 1;
 		}
 
-		//Debug.Log("RunSpeed : " + runSpeed);
-		//guitext.text = "RunSpeed : " + runSpeed;
-		guitext.text = "acceleration : " + acceleration;
-
-		// 페이지 업 / 다운 타일 난이도 설정 (1 ~ 10)
+		// 페이지 업 / 다운 타일 난이도 설정 (1 Hard ~ 100 Easy)
+		/*
 		if(Input.GetKeyUp(KeyCode.PageUp))
 		{
 			if(TileManager.gapOfRandom < 10)
@@ -65,56 +58,79 @@ public class Runner : MonoBehaviour
 				TileManager.gapOfRandom -= 1;
 			}
 		}
+		*/
+		if(Input.GetKeyUp(KeyCode.PageUp))
+		{
+			if(PlatformManager.platformDifficulty < 100)
+			{
+				PlatformManager.platformDifficulty += 1;
+			}
+		}
+		else if(Input.GetKeyUp(KeyCode.PageDown))
+		{
+			if(PlatformManager.platformDifficulty > 1)
+			{
+				PlatformManager.platformDifficulty -= 1;
+			}
+		}
+
+		guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty;
 
 		// 좌우 키 입력
 		float keySide = Input.GetAxis("Horizontal");
-		transform.Translate(Vector3.right * (runSpeed / 2) * Time.deltaTime * keySide);
+		transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * keySide);
 		
-		//Debug.Log("gapOfRandom : " + TileManager.gapOfRandom);
-
-		/*
-		if(nScrollFlag == 0)
+		// 종스크롤
+		transform.Translate(0f, 0f, runSpeed * Time.deltaTime);
+		if(touchingTile && Input.GetButtonDown("Jump"))
 		{
-			// 횡스크롤
-			transform.Translate(runSpeed * Time.deltaTime, 0f, 0f);
-
-			distanceTraveled = transform.localPosition.x;
-		}
-		else
-		{
-		*/
-			// 종스크롤
-			transform.Translate(0f, 0f, runSpeed * Time.deltaTime);
-		if(touchingTile && Input.GetButton("Jump"))
-		{
-			rigidbody.AddForce(jumpVelocity, ForceMode.VelocityChange);
+            //rigidbody.AddForce(jumpVelocity, ForceMode.VelocityChange);
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
 			touchingTile = false;
 		}
 
 		distanceTraveled = transform.localPosition.z;
-		/*
-		}
-		*/
-	}
 
-	void FixedUpdate()
-	{
-		if(touchingTile)
+		if(transform.position.y < -15)
 		{
-			//rigidbody.AddForce(0f, 0f, acceleration, ForceMode.Acceleration);
-			//Debug.Log("뭐임?");
+			runSpeed = 0; // Set the speed to 0
+
+			Destroy(gameObject);
 		}
 	}
 
-	void OnCollisionEnter()
+	public void OnCollisionEnter(Collision col)
 	{
 		touchingTile = true;
-		//Debug.Log("true");
-	}
+		//Debug.Log(col.gameObject.name);
 
-	void OnCollisionExit()
-	{
-		touchingTile = false;
-		//Debug.Log("false");
+		//int nTrapCount = TileManager.staticTrapMaterials.Length;
+		string strTile = col.gameObject.name;
+		string strMaterial = col.gameObject.renderer.material.name;
+
+		if(strTile == "TileLeft Right(Clone)" || strTile == "TileBottom Right(Clone)" || strTile == "TileTop Right(Clone)")
+		{
+			//transform.rotation = Quaternion.Euler(0, 0, -90f);
+			//LateUpdate();
+			//camera.transform.rotation = Quaternion.Euler(0, 0, -90f);
+		}
+
+		if(strTile == "TileRight Left(Clone)" || strTile == "TileBottom Left(Clone)" || strTile == "TileTop Left(Clone)")
+		{
+			//transform.rotation = Quaternion.Euler(0, 0, 90f);
+			//LateUpdate();
+			//camera.transform.rotation = Quaternion.Euler(0, 0, 90f);
+		}
+
+		//Debug.Log(strMaterial);
+		//Debug.Log(strMaterial == "Tile Fast Mat (Instance)");
+		if(strMaterial == "Tile Fast Mat (Instance)")
+		{
+			runSpeed += 1;
+		}
+		else if(strMaterial == "Tile Slow Mat (Instance)")
+		{
+			runSpeed -= 1;
+		}
 	}
 }

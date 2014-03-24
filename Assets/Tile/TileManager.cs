@@ -11,8 +11,15 @@ public class TileManager : MonoBehaviour
 	//public int minRnd = 1, maxRnd;
 	public static int gapOfRandom = 10;
 
-	public Material[] materials;
-	public PhysicMaterial[] physicMaterials;
+	public Material roadMaterials;
+	public Material[] trapMaterials;
+	public float[] trapRegenPercent;
+
+	public static Material[] staticTrapMaterials;
+	public static float rotationZ;
+	//public float[] trapSpeed;
+	//public Material[] materials;
+	//public PhysicMaterial[] physicMaterials;
 
 	private Vector3 nextPosition;
 	private Queue<Transform> objectQueue;
@@ -88,11 +95,20 @@ public class TileManager : MonoBehaviour
 		o.localScale = scale;
 		o.localPosition = position;
 
-		int materialIndex = Random.Range(0, materials.Length);
-		o.renderer.material = materials[materialIndex];
-		o.collider.material = physicMaterials[materialIndex];
+		int nRegenIndex = Random.Range(0, trapMaterials.Length);
+		int nTrapPercent = Random.Range(0, 100);
+		//Debug.Log("regen : " + nRegenIndex);
+		//Debug.Log("percent : " + nTrapPercent);
+		if(trapRegenPercent[nRegenIndex] > nTrapPercent)
+		{
+			o.renderer.material = trapMaterials[nRegenIndex];
 
-		//nRnd = Random.Range(minRnd, maxRnd);
+		}
+		else
+		{
+			o.renderer.material = roadMaterials;
+		}
+
 		nRnd = Random.Range(1, 100);
 		//Debug.Log("Random : " + nRnd);
 
