@@ -1,20 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\CaveRun3D\Assets\CaveRun3D\Choose Language\C#\Scripts\Shake.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Platform\PlatformManager.cs">
     <Files>
-      <File FileName="..\CaveRun3D\Assets\CaveRun3D\Choose Language\C#\Scripts\Platform.cs" Line="1" Column="1" />
-      <File FileName="..\CaveRun3D\Assets\CaveRun3D\Choose Language\C#\Scripts\PlatformCreator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Runner\Runner.cs" Line="137" Column="6" />
-      <File FileName="Assets\Tile\TileManager.cs" Line="66" Column="14" />
-      <File FileName="..\CaveRun3D\Assets\CaveRun3D\Choose Language\C#\Scripts\PlayerControls.cs" Line="78" Column="10" />
-      <File FileName="..\CaveRun3D\Assets\CaveRun3D\Choose Language\C#\Scripts\Shake.cs" Line="75" Column="5" />
+      <File FileName="Assets\Platform\PlatformManager.cs" Line="75" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Runner" expanded="True" />
-            <Node name="Tile" expanded="True" />
+            <Node name="Platform" expanded="True">
+              <Node name="PlatformManager.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
