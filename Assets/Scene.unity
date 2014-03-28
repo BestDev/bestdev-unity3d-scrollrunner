@@ -641,7 +641,7 @@ Prefab:
       objectReference: {fileID: 2072216436}
     - target: {fileID: 11400000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
       propertyPath: runSpeed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
       propertyPath: m_ClearFlags
@@ -657,7 +657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
       propertyPath: keySensitivity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
       propertyPath: guitext2
@@ -674,6 +674,10 @@ Prefab:
     - target: {fileID: 400002, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
       propertyPath: m_LocalRotation.w
       value: .999048233
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
+      propertyPath: jumpPower
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
@@ -1620,9 +1624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chrSize: {x: .5, y: .600000024, z: .5}
-  runSpeed: 3
-  keySensitivity: 1
-  jumpPower: 6
+  runSpeed: 5
+  keySensitivity: 2
+  jumpPower: 12
   guitext: {fileID: 2072216436}
   guitext2: {fileID: 1022758302}
 --- !u!54 &517483106
@@ -3041,11 +3045,11 @@ Prefab:
       objectReference: {fileID: 629511942}
     - target: {fileID: 11400000, guid: 1befad62c6bdc7b418572bc5f3904948, type: 2}
       propertyPath: trapRegenPercent.Array.data[0]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 1befad62c6bdc7b418572bc5f3904948, type: 2}
       propertyPath: trapRegenPercent.Array.data[1]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 1befad62c6bdc7b418572bc5f3904948, type: 2}
       propertyPath: numberOfObjects
@@ -3066,6 +3070,14 @@ Prefab:
     - target: {fileID: 11400000, guid: 1befad62c6bdc7b418572bc5f3904948, type: 2}
       propertyPath: startPosition.Array.data[3].y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1befad62c6bdc7b418572bc5f3904948, type: 2}
+      propertyPath: maxSize.y
+      value: .00100000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1befad62c6bdc7b418572bc5f3904948, type: 2}
+      propertyPath: minSize.y
+      value: .00100000005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1befad62c6bdc7b418572bc5f3904948, type: 2}
@@ -3531,8 +3543,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 205f40975c269ab42bf19f3e0fad6ec9, type: 2}
   - {fileID: 2100000, guid: b21f419e09bbee347a6293b927ef9cab, type: 2}
   trapRegenPercent:
-  - 0
-  - 0
+  - 5
+  - 5
 --- !u!4 &1682051783
 Transform:
   m_ObjectHideFlags: 0

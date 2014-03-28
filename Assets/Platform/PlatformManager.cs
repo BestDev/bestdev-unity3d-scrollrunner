@@ -84,6 +84,16 @@ public class PlatformManager : MonoBehaviour
 			{
 				nNowWallIndex = 0;
 			}
+
+			if((int)Runner.distanceTraveled % 50 == 0)
+			{
+				PlatformManager.platformDifficulty -= 5;
+				
+				if(PlatformManager.platformDifficulty < 5)
+				{
+					PlatformManager.platformDifficulty = 5;
+				}
+			}
 		}
 		
 		if(turnType != -1)
@@ -163,9 +173,10 @@ public class PlatformManager : MonoBehaviour
 		*/
 		
 		float fSizeRnd = (int)Random.Range(minSize.x, maxSize.x);
-		//float fHeightRnd = (int)Random.Range(minSize.x, 2);
+		float fHeightRnd = Random.Range(minSize.y, maxSize.y);
 		
-		Vector3 scale = new Vector3(fSizeRnd, minSize.y, minSize.z);
+		//Vector3 scale = new Vector3(fSizeRnd, minSize.y, minSize.z);
+		Vector3 scale = new Vector3(fSizeRnd, fHeightRnd, minSize.z);
 		//Random.Range(minSize.y, maxSize.y),
 		//Random.Range(minSize.z, maxSize.z));
 		
@@ -179,8 +190,9 @@ public class PlatformManager : MonoBehaviour
 		
 		obj = wallArray[_nWall, _nIndex];
 		//Debug.Log("idx " +_nIndex+  "wallpos " +obj.localPosition+ " nextpos " + nextPosition[_nWall]);
-		
-		WallPosCorrection(ref obj, ref position, _nWall, fSizeRnd, nPosRnd);
+
+		// 타일 배치 보정 함수 (회전 시 타일 위치 보정에서 좌표가 어긋나서 일단 주석처리)
+		//WallPosCorrection(ref obj, ref position, _nWall, fSizeRnd, nPosRnd);
 
 		//Debug.Log(_nWall + " " + _nIndex + "out " + position);
 		
@@ -310,7 +322,6 @@ public class PlatformManager : MonoBehaviour
 			}
 		}
 
-
 		/*
 		//Debug.Log("wall " + _nWall + " nextpos : " + _v3Pos);
 		if(_nWall == 0 || _nWall == 3)
@@ -372,7 +383,7 @@ public class PlatformManager : MonoBehaviour
 		obj.localPosition = pos;
 		*/
 		//Debug.Log("Turn Type " + turnType + " wall " + _nWall + " idx " + _nIndex);
-
+		pos.y = -2f;
 
 		if(_nWall == 0)
 		{

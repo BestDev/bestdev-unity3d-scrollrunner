@@ -68,7 +68,14 @@ public class Runner : MonoBehaviour
 		// 좌우 키 입력
 		float keySide = Input.GetAxis("Horizontal");
 		transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * keySide);
-		
+
+		// 스마트폰 터치 좌우 이동
+		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+		{
+			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+			transform.Translate(Vector3.right * touchDeltaPosition.x * Time.deltaTime * (runSpeed / keySensitivity * 0.1f));
+		}
+
 		// 종스크롤
 		transform.Translate(0f, 0f, runSpeed * Time.deltaTime);
 		if(touchingTile && Input.GetButtonDown("Jump"))
