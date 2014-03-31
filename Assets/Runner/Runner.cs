@@ -13,7 +13,7 @@ public class Runner : MonoBehaviour
 	public GUIText guitext2;
 
 	private bool touchingTile = true;
-	private int oldLayer = LayerMask.NameToLayer("Bottom");
+	private int oldLayer = 8;//LayerMask.NameToLayer("Bottom");
 	private Transform subCamera;
 	private float oldRunSpeed = 10;
 

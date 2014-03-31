@@ -192,7 +192,7 @@ public class PlatformManager : MonoBehaviour
 		//Debug.Log("idx " +_nIndex+  "wallpos " +obj.localPosition+ " nextpos " + nextPosition[_nWall]);
 
 		// 타일 배치 보정 함수 (회전 시 타일 위치 보정에서 좌표가 어긋나서 일단 주석처리)
-		//WallPosCorrection(ref obj, ref position, _nWall, fSizeRnd, nPosRnd);
+		WallPosCorrection(ref obj, ref position, _nWall, fSizeRnd, nPosRnd);
 
 		//Debug.Log(_nWall + " " + _nIndex + "out " + position);
 		
@@ -383,7 +383,7 @@ public class PlatformManager : MonoBehaviour
 		obj.localPosition = pos;
 		*/
 		//Debug.Log("Turn Type " + turnType + " wall " + _nWall + " idx " + _nIndex);
-		pos.y = -2f;
+		pos.y = -1.8f;
 
 		if(_nWall == 0)
 		{
