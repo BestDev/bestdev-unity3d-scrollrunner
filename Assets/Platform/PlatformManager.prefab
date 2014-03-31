@@ -39,8 +39,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 0}
-  numberOfObjects: 50
-  recycleOffset: 10
+  numberOfObjects: 15
+  recycleOffset: 3
   startPosition:
   - {x: 0, y: -2, z: 0}
   - {x: -2, y: 0, z: 0}

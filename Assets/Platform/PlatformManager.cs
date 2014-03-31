@@ -31,10 +31,10 @@ public class PlatformManager : MonoBehaviour
 	
 	private float fQueuePosition;
 	private Vector3[] nextPosition;
-	private float fTurn;
-	private float fQueueTemp;
-	
-	private int turnFlag = 0;
+
+	private int turnFlag = 0;	// 1 : 좌회전 / 2 : 우회전
+	private int nowBottomLayer = 0;	// 현재 바닥 레이어
+
 	
 	// Use this for initialization
 	void Start ()
@@ -44,7 +44,9 @@ public class PlatformManager : MonoBehaviour
 		wallArray = new Transform[4, numberOfObjects];
 		
 		nextPosition = new Vector3[startPosition.Length];
-		
+
+		nowBottomLayer = LayerMask.NameToLayer("Bottom");
+
 		for(int i = 0; i < startPosition.Length; i++)
 		{
 			nextPosition[i] = startPosition[i];
@@ -69,9 +71,11 @@ public class PlatformManager : MonoBehaviour
 		//Debug.Log("pm update");
 		//fQueuePosition = objectQueueBottom.Peek().localPosition.z;
 		fQueuePosition = wallArray[0, nNowWallIndex].localPosition.z;
+
 		//Debug.Log(wallArray[0, nNowWallIndex].localPosition);
 		if(fQueuePosition + recycleOffset < Runner.distanceTraveled - 3)
 		{
+			//Debug.Log("fQueuePosition " + fQueuePosition);
 			//Debug.Log(nNowWallIndex);
 			for(int i = 0; i < startPosition.Length; i++)
 			{
@@ -87,63 +91,15 @@ public class PlatformManager : MonoBehaviour
 
 			if((int)Runner.distanceTraveled % 50 == 0)
 			{
-				PlatformManager.platformDifficulty -= 5;
+				platformDifficulty -= 5;
 				
-				if(PlatformManager.platformDifficulty < 5)
+				if(platformDifficulty < 5)
 				{
-					PlatformManager.platformDifficulty = 5;
+					platformDifficulty = 5;
 				}
 			}
 		}
-		
-		if(turnType != -1)
-		{
-			for(int i = 0; i < startPosition.Length; i++)
-			{
-				for(int k = 0; k < numberOfObjects; k++)
-				{
-					PlatformTurn(i, k);
-					//System.Threading.Thread.Sleep(1);
-				}
-			}
-			
-			if(turnType == 0 || turnType == 2 || turnType == 4 || turnType == 6)
-			{
-				//turnFlag -= 1;
-				turnFlag = 1;
-			}
-			else if(turnType == 1 || turnType == 3 || turnType == 5 || turnType == 7)
-			{
-				//turnFlag += 1;
-				turnFlag = 2;
-			}
 
-			for(int i = 0; i < startPosition.Length; i++)
-			{
-				if(turnFlag < 0)
-				{
-					startRotation[i].z += 90;
-					if(startRotation[i].z > 360)
-					{
-						startRotation[i].z -= 360;
-					}
-				}
-				else
-				{
-					startRotation[i].z -= 90;
-					if(startRotation[i].z < 360)
-					{
-						startRotation[i].z += 360;
-					}
-				}
-
-				//Debug.Log("wall " + i + "startrot z : " + startRotation[i].z + " turnFlag sum : " +(turnFlag * 90));
-			}
-
-			turnType = -1;
-
-			//System.Threading.Thread.Sleep(100);
-		}
 	}
 	
 	private void Recycle(int _nWall, int _nIndex)
@@ -172,6 +128,7 @@ public class PlatformManager : MonoBehaviour
 		}
 		*/
 		
+		//float fSizeRnd = (int)Random.Range(minSize.x, maxSize.x);
 		float fSizeRnd = (int)Random.Range(minSize.x, maxSize.x);
 		float fHeightRnd = Random.Range(minSize.y, maxSize.y);
 		
@@ -192,34 +149,183 @@ public class PlatformManager : MonoBehaviour
 		//Debug.Log("idx " +_nIndex+  "wallpos " +obj.localPosition+ " nextpos " + nextPosition[_nWall]);
 
 		// 타일 배치 보정 함수 (회전 시 타일 위치 보정에서 좌표가 어긋나서 일단 주석처리)
-		WallPosCorrection(ref obj, ref position, _nWall, fSizeRnd, nPosRnd);
+		//WallPosCorrection(ref obj, ref position, _nWall, fSizeRnd, nPosRnd);
+		/*
+		if(_nWall == 0)
+		{
+			if(fSizeRnd == 1)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.x -= 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.y += 0.5f;
+				}
+			}
+			else if(fSizeRnd == 2)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.x += 1.0f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.y += 1.0f;
+				}
+			}
+			else if(fSizeRnd == 3)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.x += 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.y += 0.5f;
+				}
+			}
+		}
+		else if(_nWall == 1)
+		{
+			if(fSizeRnd == 1)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.y += 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.x += 0.5f;
+				}
+			}
+			else if(fSizeRnd == 2)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.y += 1.0f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.x += 1.0f;
+				}
+			}
+			else if(fSizeRnd == 3)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.y += 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.x += 0.5f;
+				}
+			}
+		}
+		else if(_nWall == 2)
+		{
+			if(fSizeRnd == 1)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.y += 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.x += 0.5f;
+				}
+			}
+			else if(fSizeRnd == 2)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.y += 1.0f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.x += 1.0f;
+				}
+			}
+			else if(fSizeRnd == 3)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.y += 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.x += 0.5f;
+				}
+			}
+		}
+		else if(_nWall == 3)
+		{
+			if(fSizeRnd == 1)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.x += 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.y += 0.5f;
+				}
+			}
+			else if(fSizeRnd == 2)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.x += 1.0f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.y += 1.0f;
+				}
+			}
+			else if(fSizeRnd == 3)
+			{
+				if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+				{
+					position.x += 0.5f;
+				}
+				else if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+				{
+					position.y += 0.5f;
+				}
+			}
+		}
+		*/
 
 		//Debug.Log(_nWall + " " + _nIndex + "out " + position);
 		
 		//Debug.Log("wall " + _nWall + " index " + _nIndex);
 		//Debug.Log(wallArray[_nWall, _nIndex]);
-		
-		if(_nWall == 0)
+
+		if(obj.gameObject.layer == 0)
 		{
-			//Debug.Log("cnt : " + cnt + " " + LayerMask.LayerToName(gameObject.layer));
-			//obj = objectQueueBottom.Dequeue();
-			obj.gameObject.layer = LayerMask.NameToLayer("Bottom");
-		}
-		else if(_nWall == 1)
-		{
-			//Debug.Log("cnt : " + cnt + " " + LayerMask.LayerToName(gameObject.layer));
-			//obj = objectQueueLeft.Dequeue();
-			obj.gameObject.layer = LayerMask.NameToLayer("Left");
-		}
-		else if(_nWall == 2)
-		{
-			//obj = objectQueueRight.Dequeue();
-			obj.gameObject.layer = LayerMask.NameToLayer("Right");
-		}
-		else if(_nWall == 3)
-		{
-			//obj = objectQueueTop.Dequeue();
-			obj.gameObject.layer = LayerMask.NameToLayer("Top");
+			if(_nWall == 0)
+			{
+				//Debug.Log("cnt : " + cnt + " " + LayerMask.LayerToName(gameObject.layer));
+				//obj = objectQueueBottom.Dequeue();
+				obj.gameObject.layer = LayerMask.NameToLayer("Bottom");
+			}
+			else if(_nWall == 1)
+			{
+				//Debug.Log("cnt : " + cnt + " " + LayerMask.LayerToName(gameObject.layer));
+				//obj = objectQueueLeft.Dequeue();
+				obj.gameObject.layer = LayerMask.NameToLayer("Left");
+			}
+			else if(_nWall == 2)
+			{
+				//obj = objectQueueRight.Dequeue();
+				obj.gameObject.layer = LayerMask.NameToLayer("Right");
+			}
+			else if(_nWall == 3)
+			{
+				//obj = objectQueueTop.Dequeue();
+				obj.gameObject.layer = LayerMask.NameToLayer("Top");
+			}
 		}
 		
 		obj.localScale = scale;
@@ -265,6 +371,8 @@ public class PlatformManager : MonoBehaviour
 				fCorrection = -1.5f;
 			else if(_nPosRnd == 3)
 				fCorrection = 1.5f;
+
+			Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
 		}
 			break;
 		case 2:
@@ -281,6 +389,8 @@ public class PlatformManager : MonoBehaviour
 				fCorrection = (float)Random.Range(-1, 2);
 				//Debug.Log(fCorrection);
 			}
+
+			Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
 		}
 			break;
 		case 3:
@@ -289,12 +399,16 @@ public class PlatformManager : MonoBehaviour
 				fCorrection = -0.5f;
 			else if(_nPosRnd == 1 || _nPosRnd == 3)
 				fCorrection = 0.5f;
+
+			Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
 		}
 			break;
 		default:
 			break;
 		}
 
+		//Debug.Log("turnFlag " + turnFlag);
+		//Debug.Log("old tf " + turnFlag + " wall " + _nWall + " pos " +_v3Pos + " now " + nowBottomLayer);
 		if(turnFlag == 0)
 		{
 			if(_nWall == 0 || _nWall == 3)
@@ -308,137 +422,127 @@ public class PlatformManager : MonoBehaviour
 				_obj.Translate(_v3Pos);
 			}
 		}
-		else
+		else if(turnFlag == 1)
 		{
-			if(_nWall == 0 || _nWall == 3)
+			if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
 			{
-				_v3Pos.y -= fCorrection;
-				_obj.Translate(_v3Pos);
+				if(_nWall == 0 || _nWall == 3)
+				{
+					_v3Pos.y -= fCorrection;
+				}
+				else if(_nWall == 1 || _nWall == 2)
+				{
+					_v3Pos.x -= fCorrection;
+				}
 			}
-			else if(_nWall == 1 || _nWall == 2)
+			else if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
 			{
-				_v3Pos.x -= fCorrection;
-				_obj.Translate(_v3Pos);
+				if(_nWall == 0 || _nWall == 3)
+				{
+					_v3Pos.x -= fCorrection;
+				}
+				else if(_nWall == 1 || _nWall == 2)
+				{
+					_v3Pos.y -= fCorrection;
+				}
 			}
+
+			_obj.Translate(_v3Pos);
+		}
+		else if(turnFlag == 2)
+		{
+			if(nowBottomLayer == LayerMask.NameToLayer("Left") || nowBottomLayer == LayerMask.NameToLayer("Right"))
+			{
+				if(_nWall == 0 || _nWall == 3)
+				{
+					_v3Pos.y += fCorrection;
+				}
+				else if(_nWall == 1 || _nWall == 2)
+				{
+					_v3Pos.x += fCorrection;
+				}
+			}
+			else if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
+			{
+				if(_nWall == 0 || _nWall == 3)
+				{
+					_v3Pos.x += fCorrection;
+				}
+				else if(_nWall == 1 || _nWall == 2)
+				{
+					_v3Pos.y += fCorrection;
+				}
+			}
+
+			_obj.Translate(_v3Pos);
 		}
 
-		/*
-		//Debug.Log("wall " + _nWall + " nextpos : " + _v3Pos);
-		if(_nWall == 0 || _nWall == 3)
-		{
-			if(turnFlag % 2 == 0)
-			{
-				_v3Pos.x += fCorrection;
-			}
-			else
-			{
-				_v3Pos.y += fCorrection;
-			}
-			//if(_fSizeRnd != 4.0f)
-			//	Debug.Log("size : " + _fSizeRnd + " pos : " + _v3Pos);
-		}
-		else if(_nWall == 1 || _nWall == 2)
-		{
-			if(turnFlag % 2 == 0)
-			{
-				_v3Pos.y += fCorrection;
-			}
-			else
-			{
-				_v3Pos.x += fCorrection;
-			}
-		}
-*/
-		//Debug.Log("turnFlag " + turnFlag %2 + "wallpos " + _nWall + " x : " + _v3Pos.x + " y : " + _v3Pos.y);
+		//Debug.Log("new tf " + turnFlag + " wall " + _nWall + " pos " +_v3Pos);
 	}
-	
-	public void PlatformTurn(int _nWall, int _nIndex)
+
+	// _nLayer[0] : OldLayer
+	// _nLayer[1] : NewLayer
+	public int ApplyPlatTurn(int[] _nLayer)
 	{
-		obj = wallArray[_nWall, _nIndex];
-		// 0:BL, 1:LT, 2:TR, 3:RB, 4:BR, 5:RT, 6:TL, 7:LB
-
+		//Debug.Log("ApplyPlatTurn");
 		Vector3 pos = Player.transform.localPosition;
-		/*
-		if(turnType <= 3)	// BL (B->R)
+		Debug.Log("player pos " + pos + " old " + _nLayer[0] + " new " + _nLayer[1]);
+		for(int i = 0; i < startPosition.Length; i++)
 		{
-			Debug.Log("Turn Type " + turnType + " wall " + _nWall + " idx " + _nIndex);
-			//Vector3 pos = obj.localPosition;
-			//pos.x -= 1.5f;
-			//pos.y = 0f;
-			
-			//obj.localRotation = Quaternion.Euler(0, 0, 90f);
-			//obj.localPosition = pos;
-			
-			//pos = obj.transform.TransformPoint(pos);
-			obj.RotateAround(pos, transform.forward, 90.0f);
-			//obj.localPosition = pos;
-		}
-		else if(turnType >= 4)	// BR (B->L)
-		{
-			Debug.Log("Turn Type " + turnType + " wall " + _nWall + " idx " + _nIndex);
-			
-			//pos = obj.transform.TransformPoint(pos);
-			obj.RotateAround(pos, transform.forward, -90.0f);
-		}
-		obj.localPosition = pos;
-		*/
-		//Debug.Log("Turn Type " + turnType + " wall " + _nWall + " idx " + _nIndex);
-		pos.y = -1.8f;
+			for(int k = 0; k < numberOfObjects; k++)
+			{
+				obj = wallArray[i, k];
+				// 0:BL, 1:LT, 2:TR, 3:RB, 4:BR, 5:RT, 6:TL, 7:LB
+				
+				pos.y = -1.8f;
 
-		if(_nWall == 0)
-		{
-			if(turnType == 0 || turnType == 1 || turnType == 2 || turnType == 3)	// BL (B->R)
-			{
-				obj.RotateAround(pos, Vector3.forward, 90.0f);
-			}
-			else if(turnType == 4 || turnType == 5 || turnType == 6 || turnType == 7)	// BR (B->L)
-			{
-				obj.RotateAround(pos, Vector3.forward, -90.0f);
-			}
-		}
-		else if(_nWall == 1)
-		{
-			if(turnType == 0 || turnType == 1 || turnType == 2 || turnType == 3)	// LT (L->B)
-			{
-				obj.RotateAround(pos, Vector3.forward, 90.0f);
-			}
-			else if(turnType == 4 || turnType == 5 || turnType == 6 || turnType == 7)	// LB (L->T)
-			{
-				obj.RotateAround(pos, Vector3.forward, -90.0f);
-			}
-		}
-		else if(_nWall == 2)
-		{
-			if(turnType == 0 || turnType == 1 || turnType == 2 || turnType == 3)	// RB (R->T)
-			{
-				obj.RotateAround(pos, Vector3.forward, 90.0f);
-			}
-			else if(turnType == 4 || turnType == 5 || turnType == 6 || turnType == 7)	// RT (R->B)
-			{
-				obj.RotateAround(pos, Vector3.forward, -90.0f);
-			}
-		}
-		else if(_nWall == 3)
-		{
-			if(turnType == 0 || turnType == 1 || turnType == 2 || turnType == 3)	// TR (T->L)
-			{
-				obj.RotateAround(pos, Vector3.forward, 90.0f);
-			}
-			else if(turnType == 4 || turnType == 5 || turnType == 6 || turnType == 7)	// TL (T->R)
-			{
-				obj.RotateAround(pos, Vector3.forward, -90.0f);
+				//Debug.Log("Turn old : " + _nLayer[0] + " new : " + _nLayer[1]);
+				if(_nLayer[0] == LayerMask.NameToLayer("Bottom") && _nLayer[1] == LayerMask.NameToLayer("Left")
+				        || _nLayer[0] == LayerMask.NameToLayer("Left") && _nLayer[1] == LayerMask.NameToLayer("Top")
+				        || _nLayer[0] == LayerMask.NameToLayer("Top") && _nLayer[1] == LayerMask.NameToLayer("Right")
+				        || _nLayer[0] == LayerMask.NameToLayer("Right") && _nLayer[1] == LayerMask.NameToLayer("Bottom")
+				        )
+				{
+					obj.RotateAround(pos, Vector3.forward, 90f);
+					turnFlag = 1;
+				}
+				else if(_nLayer[0] == LayerMask.NameToLayer("Bottom") && _nLayer[1] == LayerMask.NameToLayer("Right")
+				        || _nLayer[0] == LayerMask.NameToLayer("Right") && _nLayer[1] == LayerMask.NameToLayer("Top")
+				        || _nLayer[0] == LayerMask.NameToLayer("Top") && _nLayer[1] == LayerMask.NameToLayer("Left")
+				        || _nLayer[0] == LayerMask.NameToLayer("Left") && _nLayer[1] == LayerMask.NameToLayer("Bottom")
+				        )
+					
+				{
+					obj.RotateAround(pos, Vector3.forward, 270f);
+					turnFlag = 2;
+				}
+
+				if(turnFlag < 0)
+				{
+					startRotation[i].z += 90;
+					if(startRotation[i].z > 360)
+					{
+						startRotation[i].z -= 360;
+					}
+				}
+				else
+				{
+					startRotation[i].z -= 90;
+					if(startRotation[i].z < 360)
+					{
+						startRotation[i].z += 360;
+					}
+				}
+
+				// 회전 후 재사용을 위해서 좌표 보정
+				nextPosition[i].x = obj.localPosition.x;
+				nextPosition[i].y = obj.localPosition.y;
+
+				nowBottomLayer = _nLayer[1];
+				//Debug.Log("wall : " + i + " pos : " + nextPosition[i]);
 			}
 		}
 
-		//Debug.Log("wall : " + _nWall + "old next " + nextPosition[_nWall]);
-		//if(_nIndex == nNowWallIndex)
-		{
-			nextPosition[_nWall].x = obj.localPosition.x;
-			nextPosition[_nWall].y = obj.localPosition.y;
-		}
-
-		//Debug.Log("wall : " + _nWall + "new next " + nextPosition[_nWall]);
-		//Debug.Log("type : " + turnType + " " + _nWall + " pos : " + obj.localPosition + " rot :" + obj.localRotation);
-		//obj.localPosition = pos;
+		return 1;
 	}
 }

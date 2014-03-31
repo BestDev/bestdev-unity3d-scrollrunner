@@ -12,6 +12,8 @@ public class Runner : MonoBehaviour
 	public GUIText guitext;
 	public GUIText guitext2;
 
+	//public PlatformManager platMan;
+
 	private bool touchingTile = true;
 	private int oldLayer = 8;//LayerMask.NameToLayer("Bottom");
 	private Transform subCamera;
@@ -78,7 +80,7 @@ public class Runner : MonoBehaviour
 
 		// 종스크롤
 		transform.Translate(0f, 0f, runSpeed * Time.deltaTime);
-		if(touchingTile && Input.GetButtonDown("Jump"))
+		if(touchingTile && Input.GetButtonDown("Jump") && transform.localPosition.y > -2)
 		{
             //rigidbody.AddForce(jumpVelocity, ForceMode.VelocityChange);
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
@@ -101,101 +103,41 @@ public class Runner : MonoBehaviour
 		//Debug.Log("old : " + oldLayer + " now : " + LayerMask.LayerToName(col.gameObject.layer));
 		guitext2.text = "wallpos : " + col.gameObject.transform.localPosition + " now bottom : " + LayerMask.LayerToName(col.gameObject.layer);
 
-		/*
-		//col.gameObject.layer.GetTypeCode
-		if(col.gameObject.layer == LayerMask.NameToLayer("Bottom"))
+		if(oldLayer != 0 && oldLayer != col.gameObject.layer && col.gameObject.layer != 0)
 		{
-			//Debug.Log("Bot True" + oldLayer);
-			if(oldLayer == LayerMask.NameToLayer("Left"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 7;	// LB
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Lerp(transform.rotation.z, 90, Time.deltaTime / 10.0f));
-				//transform.rotation = Quaternion.Euler(0, 0, 90f);
-				//LateUpdate();
-				//camera.transform.rotation = Quaternion.Euler(0, 0, 90f);
-			}
-			else if(oldLayer == LayerMask.NameToLayer("Right"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 3;	// RB
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Lerp(transform.rotation.z, -90, Time.deltaTime / 10.0f));
-				//transform.rotation = Quaternion.Euler(0, 0, -90f);
-			}
-		}
-		else if(col.gameObject.layer == LayerMask.NameToLayer("Left"))
-		{
-			Debug.Log("Left " + oldLayer);
-			if(oldLayer == LayerMask.NameToLayer("Bottom"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 0;	// BL
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90);//Mathf.Lerp(transform.rotation.z, -90, Time.deltaTime / 10.0f));
-				//subCamera.transform.Rotate();
-				//transform.rotation = Quaternion.Euler(0, 0, -90f);
-			}
-			else if(oldLayer == LayerMask.NameToLayer("Top"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 6;	// TL
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Lerp(transform.rotation.z, 90, Time.deltaTime / 10.0f));
-				//transform.rotation = Quaternion.Euler(0, 0, 90f);
-			}
-		}
-		else if(col.gameObject.layer == LayerMask.NameToLayer("Right"))
-		{
-			if(oldLayer == LayerMask.NameToLayer("Bottom"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 4;	// BR
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Lerp(transform.rotation.z, 90, Time.deltaTime / 10.0f));
-				//transform.rotation = Quaternion.Euler(0, 0, 90f);
-				//LateUpdate();
-				//camera.transform.rotation = Quaternion.Euler(0, 0, 90f);
-			}
-			else if(oldLayer == LayerMask.NameToLayer("Top"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 2;	// TR
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Lerp(transform.rotation.z, -90, Time.deltaTime / 10.0f));
-				//transform.rotation = Quaternion.Euler(0, 0, -90f);
-			}
-		}
-		else if(col.gameObject.layer == LayerMask.NameToLayer("Top"))
-		{
-			if(oldLayer == LayerMask.NameToLayer("Left"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 1;	// LT
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Lerp(transform.rotation.z, -90, Time.deltaTime / 10.0f));
-				//transform.rotation = Quaternion.Euler(0, 0, -90f);
-			}
-			else if(oldLayer == LayerMask.NameToLayer("Right"))
-			{
-				oldRunSpeed = runSpeed;
-				runSpeed = 0;
-				PlatformManager.turnType = 5;	// RT
-				runSpeed = oldRunSpeed;
-				//subCamera.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Lerp(transform.rotation.z, 90, Time.deltaTime / 10.0f));
-				//transform.rotation = Quaternion.Euler(0, 0, 90f);
-			}
-		}
-		*/
+			oldRunSpeed = runSpeed;
+			runSpeed = 0;
+			
+			int[] nLayer = {oldLayer, col.gameObject.layer};
+			//platMan.ApplyPlatTurn(nLayer);
+			//col.gameObject.SendMessage("ApplyPlatTurn", nLayer, SendMessageOptions.DontRequireReceiver);
+			GameObject.Find("PlatformManager").SendMessage("ApplyPlatTurn", nLayer, SendMessageOptions.RequireReceiver);
+			Vector3 fixPos = transform.localPosition;
 
+			// 회전 이후 계속 무한 회전 걸림 방지를 위해서 x좌표 보정
+			if(nLayer[0] == LayerMask.NameToLayer("Bottom") && nLayer[1] == LayerMask.NameToLayer("Left")
+			   || nLayer[0] == LayerMask.NameToLayer("Left") && nLayer[1] == LayerMask.NameToLayer("Top")
+			   || nLayer[0] == LayerMask.NameToLayer("Top") && nLayer[1] == LayerMask.NameToLayer("Right")
+			   || nLayer[0] == LayerMask.NameToLayer("Right") && nLayer[1] == LayerMask.NameToLayer("Bottom")
+			   )
+			{
+				fixPos.x -= 0.01f;
+			}
+			else if(nLayer[0] == LayerMask.NameToLayer("Bottom") && nLayer[1] == LayerMask.NameToLayer("Right")
+			        || nLayer[0] == LayerMask.NameToLayer("Right") && nLayer[1] == LayerMask.NameToLayer("Top")
+			        || nLayer[0] == LayerMask.NameToLayer("Top") && nLayer[1] == LayerMask.NameToLayer("Left")
+			        || nLayer[0] == LayerMask.NameToLayer("Left") && nLayer[1] == LayerMask.NameToLayer("Bottom")
+			        )
+				
+			{
+				fixPos.x += 0.01f;
+			}
+
+			transform.localPosition = fixPos;
+			runSpeed = oldRunSpeed;
+		}
+
+		/*
 		if(oldLayer == LayerMask.NameToLayer("Bottom"))
 		{
 			if(col.gameObject.layer == LayerMask.NameToLayer("Left"))
@@ -325,6 +267,7 @@ public class Runner : MonoBehaviour
 				transform.localPosition = tempTran;
 			}
 		}
+		*/
 
 		oldLayer = col.gameObject.layer;
 
@@ -336,11 +279,17 @@ public class Runner : MonoBehaviour
 		// 레이어 체크로 바꿔야 함
 		if(strMaterial == "Tile Fast Mat (Instance)")
 		{
-			runSpeed += 1;
+			if(runSpeed < 10)
+			{
+				runSpeed += 1;
+			}
 		}
 		else if(strMaterial == "Tile Slow Mat (Instance)")
 		{
-			runSpeed -= 1;
+			if(runSpeed > 2)
+			{
+				runSpeed -= 1;
+			}
 		}
 	}
 }
