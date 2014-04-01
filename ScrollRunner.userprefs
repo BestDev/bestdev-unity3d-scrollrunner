@@ -1,17 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Runner\Runner.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Platform\PlatformManager.cs">
     <Files>
-      <File FileName="Assets\Platform\PlatformManager.cs" Line="194" Column="5" />
-      <File FileName="Assets\Runner\Runner.cs" Line="81" Column="6" />
+      <File FileName="Assets\Platform\PlatformManager.cs" Line="76" Column="1" />
+      <File FileName="Assets\Runner\Runner.cs" Line="42" Column="1" />
+      <File FileName="Assets\Manager\GameEventManager.cs" Line="8" Column="32" />
+      <File FileName="Assets\Manager\GUIManager.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Runner" expanded="True">
-              <Node name="Runner.cs" selected="True" />
+            <Node name="Manager" expanded="True" />
+            <Node name="Platform" expanded="True">
+              <Node name="PlatformManager.cs" selected="True" />
             </Node>
+            <Node name="Runner" expanded="True" />
           </Node>
         </State>
       </Pad>

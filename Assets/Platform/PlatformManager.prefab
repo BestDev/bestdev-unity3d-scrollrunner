@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 0}
-  numberOfObjects: 15
+  numberOfObjects: 20
   recycleOffset: 3
   startPosition:
   - {x: 0, y: -2, z: 0}
@@ -58,9 +58,15 @@ MonoBehaviour:
   trapMaterials:
   - {fileID: 2100000, guid: 205f40975c269ab42bf19f3e0fad6ec9, type: 2}
   - {fileID: 2100000, guid: b21f419e09bbee347a6293b927ef9cab, type: 2}
+  - {fileID: 2100000, guid: b6de80aadd0953343974d54d105076f7, type: 2}
+  - {fileID: 2100000, guid: f2a1947c0e8b56b4c8f9b14f5b71d2bd, type: 2}
+  - {fileID: 2100000, guid: 2e3350bd4bb12c2409582dcbb143fc31, type: 2}
   trapRegenPercent:
   - 5
   - 5
+  - 3
+  - 3
+  - 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

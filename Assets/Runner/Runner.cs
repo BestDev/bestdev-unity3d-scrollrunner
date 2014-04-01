@@ -4,10 +4,14 @@ using System.Collections;
 public class Runner : MonoBehaviour
 {
 	public static float distanceTraveled;
+	public static int jumpCount = 0;
+	public static int turnCount = 0;
 	public Vector3 chrSize;
 	public float runSpeed = 10;
 	public float keySensitivity = 3;	// 1 : Fast, 3 : Slow
 	public float jumpPower = 10;
+
+	public float deadPosY = -25;
 
 	public GUIText guitext;
 	public GUIText guitext2;
@@ -16,90 +20,59 @@ public class Runner : MonoBehaviour
 
 	private bool touchingTile = true;
 	private int oldLayer = 8;//LayerMask.NameToLayer("Bottom");
-	private Transform subCamera;
+	private GameObject MainCamera;
 	private float oldRunSpeed = 10;
+
+	private Vector3 startPosition;
+	private float fCameraRot = 0;
 
 	// Use this for initialization
 	void Start ()
 	{
-		//subCamera = transform.FindChild("MainCamera");
-		//subCamera.transform.LookAt(transform);
+		MainCamera = GameObject.Find("MainCamera");
+		GameEventManager.RunStart += RunStart;
+		GameEventManager.RunEnd += RunEnd;
+
+		startPosition = transform.localPosition;
+		//Debug.Log("run st pos " + startPosition);
+		renderer.enabled = false;
+		rigidbody.isKinematic = true;
+		enabled = false;
+	}
+
+	private void RunStart()
+	{
+		//Debug.Log("stpos " +startPosition);
+		distanceTraveled = 0f;
+
+		transform.localPosition = startPosition;
+		MainCamera.transform.localRotation = Quaternion.Euler(0,0,0);
+		oldLayer = 8;
+		fCameraRot = 0;
+		jumpCount = 0;
+		turnCount = 0;
+		renderer.enabled = true;
+		//runSpeed = 5; // Start speed to 5 // 재시작 시 이전 속도 유지
+		rigidbody.isKinematic = false;
+		enabled = true;
 	}
 	
+	private void RunEnd()
+	{
+		//runSpeed = 0; // Set the speed to 0
+		renderer.enabled = false;
+		rigidbody.isKinematic = true;
+		enabled = false;
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
-		// 캐릭터 사이즈 설정
-		Vector3 scale = new Vector3(
-			Random.Range(chrSize.x, chrSize.x),
-			Random.Range(chrSize.y, chrSize.y),
-			Random.Range(chrSize.z, chrSize.z));
-
-		transform.localScale = scale;
-
-		// 마우스 스크롤 스피드 업 / 다운
-		// if(Input.GetKeyUp(KeyCode.PageUp))
-		if(Input.GetAxis("Mouse ScrollWheel") > 0)
-		{
-			runSpeed += 1;
-		}
-
-		// if(Input.GetKeyUp(KeyCode.mou.PageDown))
-		if(Input.GetAxis("Mouse ScrollWheel") < 0)
-		{
-			runSpeed -= 1;
-		}
-
-		if(Input.GetKeyUp(KeyCode.PageUp))
-		{
-			if(PlatformManager.platformDifficulty < 100)
-			{
-				PlatformManager.platformDifficulty += 5;
-			}
-		}
-		else if(Input.GetKeyUp(KeyCode.PageDown))
-		{
-			if(PlatformManager.platformDifficulty > 1)
-			{
-				PlatformManager.platformDifficulty -= 5;
-			}
-		}
-
-		guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " pos : " + transform.localPosition;
-
-		// 좌우 키 입력
-		float keySide = Input.GetAxis("Horizontal");
-		transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * keySide);
-
-		// 스마트폰 터치 좌우 이동
-		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-		{
-			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-			transform.Translate(Vector3.right * touchDeltaPosition.x * Time.deltaTime * (runSpeed / keySensitivity * 0.1f));
-		}
-
-		// 종스크롤
-		transform.Translate(0f, 0f, runSpeed * Time.deltaTime);
-		if(touchingTile && Input.GetButtonDown("Jump") && transform.localPosition.y > -2)
-		{
-            //rigidbody.AddForce(jumpVelocity, ForceMode.VelocityChange);
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
-			touchingTile = false;
-		}
-
-		distanceTraveled = transform.localPosition.z;
-
-		if(transform.position.y < -25)
-		{
-			runSpeed = 0; // Set the speed to 0
-
-			Destroy(gameObject);
-		}
+		Running();
 	}
 
 	public void OnCollisionEnter(Collision col)
 	{
-		touchingTile = true;
 		//Debug.Log("old : " + oldLayer + " now : " + LayerMask.LayerToName(col.gameObject.layer));
 		guitext2.text = "wallpos : " + col.gameObject.transform.localPosition + " now bottom : " + LayerMask.LayerToName(col.gameObject.layer);
 
@@ -135,6 +108,8 @@ public class Runner : MonoBehaviour
 
 			transform.localPosition = fixPos;
 			runSpeed = oldRunSpeed;
+
+			turnCount++;
 		}
 
 		/*
@@ -274,12 +249,14 @@ public class Runner : MonoBehaviour
 		//string strTile = col.gameObject.name;
 		string strMaterial = col.gameObject.renderer.material.name;
 
-		//Debug.Log(strMaterial);
+		//float fCameraRot = MainCamera.transform.localRotation.z;
+		//Debug.Log("mat " + strMaterial + " cp " + fCameraRot);
 		//Debug.Log(strMaterial == "Tile Fast Mat (Instance)");
 		// 레이어 체크로 바꿔야 함
+		//Debug.Log(fCameraRot);
 		if(strMaterial == "Tile Fast Mat (Instance)")
 		{
-			if(runSpeed < 10)
+			if(runSpeed < 15)
 			{
 				runSpeed += 1;
 			}
@@ -291,5 +268,98 @@ public class Runner : MonoBehaviour
 				runSpeed -= 1;
 			}
 		}
+		else if(strMaterial == "Tile LeftRot Mat (Instance)")
+		{
+			fCameraRot += -90f;
+			//Debug.Log("next " + fCameraRot);
+			MainCamera.transform.localRotation = Quaternion.Euler(0,0,fCameraRot);
+		}
+		else if(strMaterial == "Tile RightRot Mat (Instance)")
+		{
+			fCameraRot += 90f;
+			//Debug.Log("next " + fCameraRot);
+			MainCamera.transform.localRotation = Quaternion.Euler(0,0,fCameraRot);
+		}
+		else if(strMaterial == "Tile TopRot Mat (Instance)")
+		{
+			fCameraRot += 180f;
+			//Debug.Log("next " + fCameraRot);
+			MainCamera.transform.localRotation = Quaternion.Euler(0,0,fCameraRot);
+		}
+
+		touchingTile = true;
+	}
+
+	public void Running()
+	{
+		// 캐릭터 사이즈 설정
+		Vector3 scale = new Vector3(
+			Random.Range(chrSize.x, chrSize.x),
+			Random.Range(chrSize.y, chrSize.y),
+			Random.Range(chrSize.z, chrSize.z));
+		
+		transform.localScale = scale;
+		
+		// 마우스 스크롤 스피드 업 / 다운
+		// if(Input.GetKeyUp(KeyCode.PageUp))
+		if(Input.GetAxis("Mouse ScrollWheel") > 0)
+		{
+			runSpeed += 1;
+		}
+		
+		// if(Input.GetKeyUp(KeyCode.mou.PageDown))
+		if(Input.GetAxis("Mouse ScrollWheel") < 0)
+		{
+			runSpeed -= 1;
+		}
+		
+		if(Input.GetKeyUp(KeyCode.PageUp))
+		{
+			if(PlatformManager.platformDifficulty < 100)
+			{
+				PlatformManager.platformDifficulty += 5;
+			}
+		}
+		else if(Input.GetKeyUp(KeyCode.PageDown))
+		{
+			if(PlatformManager.platformDifficulty > 1)
+			{
+				PlatformManager.platformDifficulty -= 5;
+			}
+		}
+		
+		guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " locpos : " + transform.localPosition + " gbpos : " + transform.position;
+		
+		// 좌우 키 입력
+		float keySide = Input.GetAxis("Horizontal");
+		transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * keySide);
+		
+		// 스마트폰 터치 좌우 이동
+		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+		{
+			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+			transform.Translate(Vector3.right * touchDeltaPosition.x * Time.deltaTime * (runSpeed / keySensitivity * 0.1f));
+		}
+		
+		// 종스크롤
+		transform.Translate(0.0f, 0.0f, runSpeed * Time.deltaTime);
+		if(touchingTile && Input.GetButtonDown("Jump") && transform.localPosition.y > -2)
+		{
+			//rigidbody.AddForce(jumpVelocity, ForceMode.VelocityChange);
+			rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
+			touchingTile = false;
+			jumpCount++;
+		}
+		
+		distanceTraveled = transform.localPosition.z;
+		
+		if(transform.position.y < deadPosY)
+		{
+			GameEventManager.TriggerRunEnd();
+		}
+		
+		// 캐릭터 따라가는 카메라
+		//MainCamera.transform.position = new Vector3(MainCamera.transform.position.x - (MainCamera.transform.position.x - transform.position.x) * 0.1f, transform.position.y + 1.7f, transform.position.z - 4);
+		MainCamera.transform.position = new Vector3(MainCamera.transform.position.x - (MainCamera.transform.position.x - transform.position.x), transform.position.y + 1.7f, transform.position.z - 4);
 	}
 }

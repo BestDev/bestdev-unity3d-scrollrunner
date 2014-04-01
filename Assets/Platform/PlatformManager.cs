@@ -7,6 +7,7 @@ public class PlatformManager : MonoBehaviour
 	internal Transform platformCopy;
 	
 	internal GameObject Player;
+	//internal Runner runner;
 	
 	public int numberOfObjects;
 	public float recycleOffset;
@@ -29,8 +30,9 @@ public class PlatformManager : MonoBehaviour
 	public Transform[,] wallArray;
 	private int nNowWallIndex = 0;
 	
-	private float fQueuePosition;
+	private float fQueuePosition = 0;
 	private Vector3[] nextPosition;
+	private Vector3[] nextRotation;
 
 	private int turnFlag = 0;	// 1 : 좌회전 / 2 : 우회전
 	private int nowBottomLayer = 0;	// 현재 바닥 레이어
@@ -39,30 +41,74 @@ public class PlatformManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		GameEventManager.RunStart += RunStart;
+		GameEventManager.RunEnd += RunEnd;
+
 		Player = GameObject.FindWithTag("Runner");
-		
+
 		wallArray = new Transform[4, numberOfObjects];
-		
+
 		nextPosition = new Vector3[startPosition.Length];
+		nextRotation = new Vector3[startRotation.Length];
 
 		nowBottomLayer = LayerMask.NameToLayer("Bottom");
 
 		for(int i = 0; i < startPosition.Length; i++)
 		{
 			nextPosition[i] = startPosition[i];
+			nextRotation[i] = startRotation[i];
 		}
 		
 		for(int i = 0; i < numberOfObjects; i++)
 		{
 			for(int k = 0; k < startPosition.Length; k++)
 			{
-				platformCopy = Instantiate(platform, transform.position, Quaternion.Euler(startRotation[k])) as Transform;
+				platformCopy = Instantiate(platform, transform.position, Quaternion.Euler(nextRotation[k])) as Transform;
 				
 				wallArray[k, i] = platformCopy;
 				// 0 : Bottom, 1 : Left, 2 : Right, 3 : Top
 				Recycle(k, i);
 			}
 		}
+
+		enabled = false;
+	}
+
+	private void RunStart()
+	{
+		//Debug.Log("RunStart");
+		//nowBottomLayer = LayerMask.NameToLayer("Bottom");
+		nNowWallIndex = 0;
+        turnFlag = 0;
+
+		if(platformDifficulty < 10)
+		{
+			platformDifficulty = 95;
+		}
+
+		for(int i = 0; i < startPosition.Length; i++)
+		{
+			nextPosition[i] = startPosition[i];
+			nextRotation[i] = startRotation[i];
+			//Debug.Log("next pos " + i + " " + startPosition[i]);
+			//Debug.Log("next rot " + i + " " + startRotation[i]);
+		}
+		Debug.Log(numberOfObjects);		
+		for(int i = 0; i < numberOfObjects; i++)
+		{
+			for(int k = 0; k < startPosition.Length; k++)
+			{
+				// 0 : Bottom, 1 : Left, 2 : Right, 3 : Top
+				Recycle(k, i);
+			}
+		}
+
+		enabled = true;
+	}
+
+	private void RunEnd()
+	{
+		enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -73,6 +119,7 @@ public class PlatformManager : MonoBehaviour
 		fQueuePosition = wallArray[0, nNowWallIndex].localPosition.z;
 
 		//Debug.Log(wallArray[0, nNowWallIndex].localPosition);
+		//Debug.Log("fQueuePosition " + fQueuePosition + " run distravel " + Runner.distanceTraveled);
 		if(fQueuePosition + recycleOffset < Runner.distanceTraveled - 3)
 		{
 			//Debug.Log("fQueuePosition " + fQueuePosition);
@@ -89,13 +136,21 @@ public class PlatformManager : MonoBehaviour
 				nNowWallIndex = 0;
 			}
 
-			if((int)Runner.distanceTraveled % 50 == 0)
+			if((int)Runner.distanceTraveled % 30 == 0)
 			{
 				platformDifficulty -= 5;
-				
+
+				if((int)platformDifficulty % 10 == 0)
+				{
+					if(Player.GetComponent<Runner>().runSpeed < 15)
+					{
+						Player.GetComponent<Runner>().runSpeed += 1;
+					}
+				}
+
 				if(platformDifficulty < 5)
 				{
-					platformDifficulty = 5;
+					platformDifficulty = 95;
 				}
 			}
 		}
@@ -149,7 +204,7 @@ public class PlatformManager : MonoBehaviour
 		//Debug.Log("idx " +_nIndex+  "wallpos " +obj.localPosition+ " nextpos " + nextPosition[_nWall]);
 
 		// 타일 배치 보정 함수 (회전 시 타일 위치 보정에서 좌표가 어긋나서 일단 주석처리)
-		//WallPosCorrection(ref obj, ref position, _nWall, fSizeRnd, nPosRnd);
+		WallPosCorrection(ref position, _nWall, fSizeRnd, nPosRnd);
 		/*
 		if(_nWall == 0)
 		{
@@ -301,7 +356,7 @@ public class PlatformManager : MonoBehaviour
 		
 		//Debug.Log("wall " + _nWall + " index " + _nIndex);
 		//Debug.Log(wallArray[_nWall, _nIndex]);
-
+		//Debug.Log("wall " +_nWall + " layer " + obj.gameObject.layer);
 		if(obj.gameObject.layer == 0)
 		{
 			if(_nWall == 0)
@@ -330,13 +385,13 @@ public class PlatformManager : MonoBehaviour
 		
 		obj.localScale = scale;
 		obj.localPosition = position;
-		obj.localRotation = Quaternion.Euler(startRotation[_nWall]);
+		obj.localRotation = Quaternion.Euler(nextRotation[_nWall]);
 		
 		int nRegenIndex = Random.Range(0, trapMaterials.Length);
 		int nTrapPercent = Random.Range(0, 100);
 		
 		// Trap
-		if(trapRegenPercent[nRegenIndex] > nTrapPercent)
+		if(trapRegenPercent[nRegenIndex] > nTrapPercent && _nIndex >= 5)
 		{
 			obj.renderer.material = trapMaterials[nRegenIndex];
 		}
@@ -355,10 +410,45 @@ public class PlatformManager : MonoBehaviour
 		//Debug.Log("nextpos new " + nextPosition[_nWall]);
 	}
 	
-	private void WallPosCorrection(ref Transform _obj, ref Vector3 _v3Pos, int _nWall, float _fSizeRnd, int _nPosRnd)
+	private void WallPosCorrection(ref Vector3 _v3Pos, int _nWall, float _fSizeRnd, int _nPosRnd)
 	{
 		float fCorrection = 0;
-		
+
+		if(_fSizeRnd == 1f)
+		{
+			if(_nPosRnd == 0)
+				fCorrection = -0.5f;
+			else if(_nPosRnd == 1)
+				fCorrection = 0.5f;
+			else if(_nPosRnd == 2)
+				fCorrection = -1.5f;
+			else if(_nPosRnd == 3)
+				fCorrection = 1.5f;
+		}
+		else if(_fSizeRnd == 2f)
+		{
+			if(_nPosRnd == 0)
+				fCorrection = 0f;
+			else if(_nPosRnd == 1)
+				fCorrection = -1f;
+			else if(_nPosRnd == 2)
+				fCorrection = 1f;
+			else if(_nPosRnd == 3)
+			{
+				// 3이 걸릴 경우 랜덤 사용 (확률적으로 이게 더 나을듯)
+				fCorrection = (float)Random.Range(-1, 2);
+				//Debug.Log(fCorrection);
+			}
+		}
+		else if(_fSizeRnd == 3f)
+		{
+			if(_nPosRnd == 0 || _nPosRnd == 2)
+				fCorrection = -0.5f;
+			else if(_nPosRnd == 1 || _nPosRnd == 3)
+				fCorrection = 0.5f;
+		}
+
+		/*
 		switch((int)_fSizeRnd)
 		{
 		case 1:
@@ -372,7 +462,7 @@ public class PlatformManager : MonoBehaviour
 			else if(_nPosRnd == 3)
 				fCorrection = 1.5f;
 
-			Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
+			//Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
 		}
 			break;
 		case 2:
@@ -390,7 +480,7 @@ public class PlatformManager : MonoBehaviour
 				//Debug.Log(fCorrection);
 			}
 
-			Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
+			//Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
 		}
 			break;
 		case 3:
@@ -400,12 +490,13 @@ public class PlatformManager : MonoBehaviour
 			else if(_nPosRnd == 1 || _nPosRnd == 3)
 				fCorrection = 0.5f;
 
-			Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
+			//Debug.Log(" size " + _fSizeRnd + " posrnd " + _nPosRnd + " corr " + fCorrection);
 		}
 			break;
 		default:
 			break;
 		}
+		*/
 
 		//Debug.Log("turnFlag " + turnFlag);
 		//Debug.Log("old tf " + turnFlag + " wall " + _nWall + " pos " +_v3Pos + " now " + nowBottomLayer);
@@ -414,12 +505,12 @@ public class PlatformManager : MonoBehaviour
 			if(_nWall == 0 || _nWall == 3)
 			{
 				_v3Pos.x += fCorrection;
-				_obj.Translate(_v3Pos);
+				//_obj.Translate(_v3Pos);
 			}
 			else if(_nWall == 1 || _nWall == 2)
 			{
 				_v3Pos.y += fCorrection;
-				_obj.Translate(_v3Pos);
+				//_obj.Translate(_v3Pos);
 			}
 		}
 		else if(turnFlag == 1)
@@ -447,7 +538,7 @@ public class PlatformManager : MonoBehaviour
 				}
 			}
 
-			_obj.Translate(_v3Pos);
+			//_obj.Translate(_v3Pos);
 		}
 		else if(turnFlag == 2)
 		{
@@ -474,7 +565,7 @@ public class PlatformManager : MonoBehaviour
 				}
 			}
 
-			_obj.Translate(_v3Pos);
+			//_obj.Translate(_v3Pos);
 		}
 
 		//Debug.Log("new tf " + turnFlag + " wall " + _nWall + " pos " +_v3Pos);
@@ -486,7 +577,7 @@ public class PlatformManager : MonoBehaviour
 	{
 		//Debug.Log("ApplyPlatTurn");
 		Vector3 pos = Player.transform.localPosition;
-		Debug.Log("player pos " + pos + " old " + _nLayer[0] + " new " + _nLayer[1]);
+		//Debug.Log("player pos " + pos + " old " + _nLayer[0] + " new " + _nLayer[1]);
 		for(int i = 0; i < startPosition.Length; i++)
 		{
 			for(int k = 0; k < numberOfObjects; k++)
@@ -517,29 +608,34 @@ public class PlatformManager : MonoBehaviour
 					turnFlag = 2;
 				}
 
-				if(turnFlag < 0)
-				{
-					startRotation[i].z += 90;
-					if(startRotation[i].z > 360)
-					{
-						startRotation[i].z -= 360;
-					}
-				}
-				else
-				{
-					startRotation[i].z -= 90;
-					if(startRotation[i].z < 360)
-					{
-						startRotation[i].z += 360;
-					}
-				}
-
 				// 회전 후 재사용을 위해서 좌표 보정
-				nextPosition[i].x = obj.localPosition.x;
-				nextPosition[i].y = obj.localPosition.y;
+				// 사이즈 4짜리 좌표만 추가 (나머지 좌표는 이미 보정된 좌표이므로 회전 시 좌표가 틀어짐)
+				if(obj.transform.localScale.x == 4f)
+				{
+					//Debug.Log("4tile " + i);
+					nextPosition[i].x = obj.localPosition.x;
+					nextPosition[i].y = obj.localPosition.y;
+				}
 
 				nowBottomLayer = _nLayer[1];
-				//Debug.Log("wall : " + i + " pos : " + nextPosition[i]);
+				//Debug.Log("wall : " + i + " pos x : " + obj.localPosition.x + " pos y : " + obj.localPosition.y);
+			}
+
+			if(turnFlag == 1)
+			{
+				nextRotation[i].z += 90;
+				if(nextRotation[i].z > 360)
+				{
+					nextRotation[i].z -= 360;
+				}
+			}
+			else if(turnFlag == 2)
+			{
+				nextRotation[i].z -= 90;
+				if(nextRotation[i].z < 360)
+				{
+					nextRotation[i].z += 360;
+				}
 			}
 		}
 
