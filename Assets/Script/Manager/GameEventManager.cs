@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/**
+ * @file GameEventManager.cs
+ * @date 2014/03/24
+ * @author SungMin Lee(bestdev@gameonstudio.co.kr)
+ * @brief 게임 시작 / 종료 관리 스크립트
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public static class GameEventManager

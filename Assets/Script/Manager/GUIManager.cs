@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/**
+ * @file GUIManager.cs
+ * @date 2014/03/24
+ * @author SungMin Lee(bestdev@gameonstudio.co.kr)
+ * @brief 게임 시작 / 종료 GUI 관리 스크립트
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class GUIManager : MonoBehaviour
@@ -19,12 +26,10 @@ public class GUIManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log("guiman update");
 		if(Input.GetButtonDown("Jump"))
 		{
 			GameEventManager.TriggerRunStart();
 		}
-		Debug.Log("guiman update 2");
 	}
 
 	private void RunStart()

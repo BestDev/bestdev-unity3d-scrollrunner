@@ -3605,7 +3605,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 180}
   minSize: {x: 0, y: .00100000005, z: 1}
   maxSize: {x: 4, y: .00100000005, z: 1}
-  turnAngle: 180
   roadMaterials: {fileID: 2100000, guid: 671bf1c318a95534da920f2cce27c38b, type: 2}
   trapMaterials:
   - {fileID: 2100000, guid: 205f40975c269ab42bf19f3e0fad6ec9, type: 2}
