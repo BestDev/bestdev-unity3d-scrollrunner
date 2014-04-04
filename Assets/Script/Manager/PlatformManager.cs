@@ -132,13 +132,13 @@ public class PlatformManager : MonoBehaviour
 			}
 
 			// 일정 거리 이동 시 난이도 상승 및 이동속도 상승
-			if((int)Runner.distanceTraveled % 30 == 0)
+			if((int)Runner.distanceTraveled % 100 == 0)
 			{
 				platformDifficulty -= 5;
 
-				if((int)platformDifficulty % 10 == 0)
+				//if((int)platformDifficulty % 10 == 0)
 				{
-					if(Player.GetComponent<Runner>().runSpeed < 15)
+					if(Player.GetComponent<Runner>().runSpeed < 10)
 					{
 						Player.GetComponent<Runner>().runSpeed += 1;
 					}
