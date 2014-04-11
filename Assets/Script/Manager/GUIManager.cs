@@ -51,7 +51,7 @@ public class GUIManager : MonoBehaviour
 	private void RunEnd()
 	{
 		float fRundistance = Runner.distanceTraveled - 1f;
-		resultText.text = "Run distance : " + fRundistance + "m\n" + "Jump Count : " + Runner.jumpCount + "\nTurn Count : " + Runner.turnCount + "\nLast Difficulty : " + PlatformManager.platformDifficulty;
+		resultText.text = "Run distance : " + fRundistance + "m\n" + "Jump Count : " + Runner.jumpCount + "\nTurn Count : " + Runner.turnCount + "\nTotal Item : " + Runner.pickItemCount + "\nLast Difficulty : " + PlatformManager.platformDifficulty;
 
 		resultText.enabled = true;
 		endText.enabled = true;

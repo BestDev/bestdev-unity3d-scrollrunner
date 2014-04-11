@@ -12,10 +12,9 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
-  - 54: {fileID: 5400000}
-  m_Layer: 18
-  m_Name: Runner
-  m_TagString: Runner
+  m_Layer: 0
+  m_Name: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 1}
-  m_LocalScale: {x: .400000006, y: .5, z: .200000003}
+  m_LocalPosition: {x: 0, y: -1.5, z: -20}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -43,7 +42,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 18635eb1bb042ff45a4d8c4628592ae5, type: 2}
+  - {fileID: 2100000, guid: 0113ba2679191a24c8a0ba8ca84dc839, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -59,21 +58,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5400000
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 2
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -81,10 +65,10 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -94,17 +78,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1872ab03dddb5049a47068b16811e8c, type: 3}
+  m_Script: {fileID: 11500000, guid: ba6a5e60fce158c438f20aaca82858b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chrSize: {x: .400000006, y: .5, z: .200000003}
-  runSpeed: 5
-  keySensitivity: 3
-  jumpPower: 7
-  deadPosY: -20
-  touchType: 1
-  guitext: {fileID: 0}
-  guitext2: {fileID: 0}
+  rotVelocity: {x: 45, y: 90, z: 1}
+  rycycleOffset: 3
+  timerForDel: 0
+  timerForDelLimit: 60
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

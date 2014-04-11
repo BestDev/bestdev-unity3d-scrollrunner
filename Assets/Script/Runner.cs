@@ -20,6 +20,9 @@
  * @brief 캐릭터 컨트롤 스크립트
  */
 
+#define _ANDROID
+//#define _PC
+
 using UnityEngine;
 using System.Collections;
 
@@ -28,13 +31,15 @@ public class Runner : MonoBehaviour
 	public static float distanceTraveled;	///< 캐릭터 이동 거리
 	public static int jumpCount = 0;	///< 캐릭터 점프 횟수
 	public static int turnCount = 0;	///< 벽면 회전 횟수
+	public static int pickItemCount = 0;	/// 아이템 획득 횟수
+
 	public Vector3 chrSize;	///< 캐릭터 사이즈
 	public float runSpeed = 5;	///< 기본 이동 속도
 	public float keySensitivity = 3;	///< 좌우 키 감도 (1 : Fast ~ n : Slow)
-	public float jumpPower = 10;	///< 캐릭터 점프 강도
+	public float jumpPower = 7;	///< 캐릭터 점프 강도
 
 	public float deadPosY = -20;	///< 캐릭터 사망 처리 y좌표
-	public int touchType = 1;	///< 모바일 조작 방식 옵션 (0 : 드래그 이동, 1 : 터치유지 이동)
+	public int touchType = 1;	///< 모바일 조작 방식 옵션 (0 : 슬라이드 이동, 1 : 터치유지 이동)
 	
 	public GUIText guitext;
 	public GUIText guitext2;
@@ -45,7 +50,7 @@ public class Runner : MonoBehaviour
 	private float oldRunSpeed = 5;	///< 이전 캐릭터 이동 속도
 
 	private Vector3 startPosition;	///< 캐릭터 게임 시작 위치
-	private float fCameraRot = 0;	///< 카메라 회적 각도
+	private float fCameraRot = 0;	///< 카메라 회전 각도
 
 	// Use this for initialization
 	void Start ()
@@ -66,11 +71,12 @@ public class Runner : MonoBehaviour
 		distanceTraveled = 0f;
 
 		transform.localPosition = startPosition;
-		MainCamera.transform.localRotation = Quaternion.Euler(0,0,0);
+		MainCamera.transform.localRotation = Quaternion.Euler(20f,0,0);
 		oldLayer = 8;
 		fCameraRot = 0;
 		jumpCount = 0;
 		turnCount = 0;
+		pickItemCount = 0;
 		renderer.enabled = true;
 		//runSpeed = 5; // Start speed to 5 // 재시작 시 이전 속도 유지
 		rigidbody.isKinematic = false;
@@ -119,15 +125,12 @@ public class Runner : MonoBehaviour
 			}
 		}
 
-		// 캐릭터 컨트롤
-		RunnerControl();
-
 		// 캐릭터 따라가는 카메라
 		//MainCamera.transform.position = new Vector3(MainCamera.transform.position.x - (MainCamera.transform.position.x - transform.position.x) * 0.1f, transform.position.y + 1.7f, transform.position.z - 4);
-		MainCamera.transform.position = new Vector3(MainCamera.transform.position.x - (MainCamera.transform.position.x - transform.position.x), transform.position.y + 1.7f, transform.position.z - 4);
+		MainCamera.transform.position = new Vector3(MainCamera.transform.position.x - (MainCamera.transform.position.x - transform.position.x), transform.position.y + 1.7f, transform.position.z - 2.2f);
 
 		// 캐릭터 점프 금지
-		if (transform.position.y < -1.8f)
+		if (transform.position.y < -2.5f)
 		{
 			touchingTile = false;
 		}
@@ -137,6 +140,9 @@ public class Runner : MonoBehaviour
 		{
 			GameEventManager.TriggerRunEnd();
 		}
+
+		// 캐릭터 컨트롤
+		RunnerControl();
 	}
 
 	/**
@@ -151,11 +157,21 @@ public class Runner : MonoBehaviour
 	public void OnCollisionEnter(Collision col)
 	{
 		guitext2.text = "wallpos : " + col.gameObject.transform.localPosition + " now bottom : " + LayerMask.LayerToName(col.gameObject.layer);
+		//Debug.Log("col enter" + LayerMask.LayerToName(col.gameObject.layer) + " pos" + transform.localPosition);
+		// 가끔 충돌 체크 못하고 빠져 죽는 문제 수정
+		Vector3 locpos = transform.localPosition;
+		if (locpos.y < -1.7f)
+		{
+			// 박스 캐릭터 일 경우
+			locpos.y = -1.6f;
+			transform.localPosition = locpos;
+			//Debug.Log(locpos);
+		}
 
 		if(oldLayer != 0 && oldLayer != col.gameObject.layer && col.gameObject.layer != 0)
 		{
 			oldRunSpeed = runSpeed;
-			runSpeed = 0;
+			//runSpeed = 0;
 			
 			int[] nLayer = {oldLayer, col.gameObject.layer};
 			//col.gameObject.SendMessage("ApplyPlatTurn", nLayer, SendMessageOptions.DontRequireReceiver);
@@ -169,7 +185,8 @@ public class Runner : MonoBehaviour
 			   || nLayer[0] == LayerMask.NameToLayer("Right") && nLayer[1] == LayerMask.NameToLayer("Bottom")
 			   )
 			{
-				fixPos.x -= 0.01f;
+				fixPos.x -= 0.05f;
+				fixPos.y += 0.05f;
 			}
 			else if(nLayer[0] == LayerMask.NameToLayer("Bottom") && nLayer[1] == LayerMask.NameToLayer("Right")
 			        || nLayer[0] == LayerMask.NameToLayer("Right") && nLayer[1] == LayerMask.NameToLayer("Top")
@@ -178,7 +195,8 @@ public class Runner : MonoBehaviour
 			        )
 				
 			{
-				fixPos.x += 0.01f;
+				fixPos.x += 0.05f;
+				fixPos.y += 0.05f;
 			}
 
 			transform.localPosition = fixPos;
@@ -244,8 +262,9 @@ public class Runner : MonoBehaviour
 		
 		transform.localScale = scale;
 
-		//guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " locpos : " + transform.localPosition + " gbpos : " + transform.position;
+		guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " locpos : " + transform.localPosition + " gbpos : " + transform.position;
 
+#if _PC
 		// 좌우 키 입력
 		float keySide = Input.GetAxis("Horizontal");
 		transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * keySide);
@@ -258,10 +277,12 @@ public class Runner : MonoBehaviour
 			touchingTile = false;
 			jumpCount++;
 		}
+#endif
 		
+#if _ANDROID
 		// 스마트폰 터치 좌우 이동
 		// 조작 방식에 대한 추가 및 수정 필요
-		// 0 : 드래그 이동
+		// 0 : 슬라이드 이동
 		if (touchType == 0)
 		{
 			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -270,20 +291,23 @@ public class Runner : MonoBehaviour
 				transform.Translate(Vector3.right * (runSpeed * 0.1f) * Time.deltaTime * touchDeltaPosition.x);
 			}
 
-			// 터치 점프
-			if (touchingTile && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+			// y축 슬라이드 점프
+			if (touchingTile && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
 			{
-				rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
-				touchingTile = false;
-				jumpCount++;
+				Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+
+				// 슬라이드 이동 거리 y축 5이상일 경우에만 점프
+				if (touchDeltaPosition.y > 5)
+				{
+					rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
+					touchingTile = false;
+					jumpCount++;
+				}
 			}
 		}
 		// 1 : 터치유지 이동
 		else if (touchType == 1)
 		{
-			if (Input.touchCount > 0)
-				guitext.text = "touchphase " + Input.GetTouch(0).phase;
-
 			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
 			{
 				Vector2 touchPosition = Input.GetTouch(0).position;
@@ -301,23 +325,32 @@ public class Runner : MonoBehaviour
 				{
 					fHorizontal = -1;
 				}
-
-				transform.Translate(Vector3.right * (runSpeed) * Time.deltaTime * fHorizontal);
+				
+				// 이속에 따른 좌우 이동 처리 안하고 고정 값으로 처리
+				//transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * fHorizontal);
+				transform.Translate(Vector3.right * 2 * Time.deltaTime * fHorizontal);
 			}
 
-			// y축 슬라이드 점프
-			if (touchingTile && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-			{
-				Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+			guitext.text = "touchphase " + Input.GetTouch(0).phase + " tchTile " + touchingTile + " tchCnt " + Input.touchCount + " pos " + transform.localPosition;
 
-				// 슬라이드 이동 거리 y축 5이상일 경우에만 점프
-				if (touchDeltaPosition.y > 5)
+			// 터치 점프
+			if (touchingTile && Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary && Input.GetTouch(1).phase == TouchPhase.Stationary) || (Input.GetTouch(0).phase == TouchPhase.Stationary && Input.GetTouch(1).phase == TouchPhase.Stationary))
+			{
+				if (transform.localPosition.y > -2f && transform.localPosition.y < -1f)
 				{
 					rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
-					touchingTile = false;
 					jumpCount++;
 				}
+
+				touchingTile = false;
 			}
 		}
+#endif
+	}
+
+	public static void AddItem()
+	{
+		pickItemCount++;
+		//Debug.Log(pickItemCount);
 	}
 }

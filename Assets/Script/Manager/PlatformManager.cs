@@ -11,8 +11,7 @@ using System.Collections.Generic;
 public class PlatformManager : MonoBehaviour
 {
 	public Transform platform;  ///< 복제할 기본 바닥면
-	internal Transform platformCopy;    ///< 복제 생성된 바닥면
-	
+	//internal Transform platformCopy;    ///< 복제 생성된 바닥면
 	internal GameObject Player; ///< 캐릭터 게임 오브젝트
 	
 	public int numberOfObjects; ///< 최초 생성 바닥면 개수 (해당 개수로 재활용)
@@ -28,6 +27,13 @@ public class PlatformManager : MonoBehaviour
 	
 	public static float platformDifficulty = 95;    ///< 바닥 타일 배치 난이도 (0 : Hard ~ 100 : Easy)
     public Transform[,] wallArray;  ///< 바닥면 관리 배열 (해당 배열내 바닥면 재활용)
+
+	public Transform ItemObject;	///< 아이템 오브젝트
+	//internal Transform ItemObjectCopy;	///< 복제 생성된 아이템
+	//internal int ItemIndex;	///< 아이템 인덱스
+	public Material[] itemMaterials;	///< 아이템 메터리얼
+	public float ItemRate;	///< 아이템 생성 확률
+	public Transform[,] itemArray;	///< 아이템 관리 배열
 
 	private Transform obj;  ///< 바닥면 재활용 시 사용하는 바닥면
 	
@@ -50,6 +56,7 @@ public class PlatformManager : MonoBehaviour
 		Player = GameObject.FindWithTag("Runner");
 
 		wallArray = new Transform[4, numberOfObjects];
+		itemArray = new Transform[4, numberOfObjects];
 
 		nextPosition = new Vector3[startPosition.Length];
 		nextRotation = new Vector3[startRotation.Length];
@@ -62,17 +69,15 @@ public class PlatformManager : MonoBehaviour
 			nextRotation[i] = startRotation[i];
 		}
 		
-		for(int i = 0; i < numberOfObjects; i++)
-		{
-			for(int k = 0; k < startPosition.Length; k++)
-			{
-				platformCopy = Instantiate(platform, transform.position, Quaternion.Euler(nextRotation[k])) as Transform;
-				
-				wallArray[k, i] = platformCopy;
-				// 0 : Bottom, 1 : Left, 2 : Right, 3 : Top
-				Recycle(k, i);
-			}
-		}
+		//for(int i = 0; i < numberOfObjects; i++)
+		//{
+		//	for(int k = 0; k < startPosition.Length; k++)
+		//	{
+		//		wallArray[k, i] = Instantiate(platform, transform.position, Quaternion.Euler(nextRotation[k])) as Transform;
+		//		// 0 : Bottom, 1 : Left, 2 : Right, 3 : Top
+		//		Recycle(k, i);
+		//	}
+		//}
 
 		enabled = false;
 	}
@@ -83,7 +88,7 @@ public class PlatformManager : MonoBehaviour
 		nNowWallIndex = 0;
         turnFlag = 0;
 
-		if(platformDifficulty < 10)
+		if(platformDifficulty < 60)
 		{
 			platformDifficulty = 95;
 		}
@@ -98,6 +103,10 @@ public class PlatformManager : MonoBehaviour
 		{
 			for(int k = 0; k < startPosition.Length; k++)
 			{
+				if (wallArray[k, i] == null)
+				{
+					wallArray[k, i] = Instantiate(platform, transform.position, Quaternion.Euler(nextRotation[k])) as Transform;
+				}
 				// 0 : Bottom, 1 : Left, 2 : Right, 3 : Top
 				Recycle(k, i);
 			}
@@ -132,6 +141,7 @@ public class PlatformManager : MonoBehaviour
 			}
 
 			// 일정 거리 이동 시 난이도 상승 및 이동속도 상승
+			// 100타일마다 난이도 및 이속 변경
 			if((int)Runner.distanceTraveled % 100 == 0)
 			{
 				platformDifficulty -= 5;
@@ -144,7 +154,8 @@ public class PlatformManager : MonoBehaviour
 					}
 				}
 
-				if(platformDifficulty < 5)
+				// 난이도 60 이하로 내려갈 경우 다시 95부터 반복
+				if(platformDifficulty < 60)
 				{
 					platformDifficulty = 95;
 				}
@@ -189,7 +200,7 @@ public class PlatformManager : MonoBehaviour
 			maxSize.x = 2.0f;
 		}
 		*/
-		
+
 		float fSizeRnd = (int)Random.Range(minSize.x, maxSize.x);
 		float fHeightRnd = Random.Range(minSize.y, maxSize.y);
 		
@@ -203,7 +214,7 @@ public class PlatformManager : MonoBehaviour
 		obj = wallArray[_nWall, _nIndex];
 
 		// 면 사이즈에 따른 좌표 보정
-		WallPosCorrection(ref position, _nWall, fSizeRnd, nPosRnd);
+		WallPosCorrection(ref position, _nWall, fSizeRnd, nPosRnd, _nIndex);
 
 		if(obj.gameObject.layer == 0)
 		{
@@ -228,6 +239,11 @@ public class PlatformManager : MonoBehaviour
 		obj.localScale = scale;
 		obj.localPosition = position;
 		obj.localRotation = Quaternion.Euler(nextRotation[_nWall]);
+
+		//if (itemArray[_nWall, _nIndex] != null)
+		//{
+		//	itemArray[_nWall, _nIndex].localRotation = Quaternion.Euler(nextRotation[_nWall]);
+		//}
 		
 		int nRegenIndex = Random.Range(0, trapMaterials.Length);
 		int nTrapPercent = Random.Range(0, 100);
@@ -242,7 +258,13 @@ public class PlatformManager : MonoBehaviour
 		{
 			obj.renderer.material = roadMaterials;
 		}
-		
+
+		// 아이템 부모 면 설정
+		//if (itemArray[_nWall, _nIndex] != null)
+		//{
+		//	itemArray[_nWall, _nIndex].parent = obj;
+		//}
+
 		nRnd = Random.Range(1, 100);
 		
 		nextPosition[_nWall].z += scale.z;
@@ -260,9 +282,10 @@ public class PlatformManager : MonoBehaviour
     @see 
     @warning 
     */
-    private void WallPosCorrection(ref Vector3 _v3Pos, int _nWall, float _fSizeRnd, int _nPosRnd)
+	private void WallPosCorrection(ref Vector3 _v3Pos, int _nWall, float _fSizeRnd, int _nPosRnd, int _nIndex)
 	{
 		float fCorrection = 0;
+		Vector3 v3ItemPos = _v3Pos;
 
 		// 면 사이즈에 따른 각각의 좌표 보정값 결정
 		if(_fSizeRnd == 1f)
@@ -304,10 +327,36 @@ public class PlatformManager : MonoBehaviour
 			if(_nWall == 0 || _nWall == 3)
 			{
 				_v3Pos.x += fCorrection;
+
+				if (_nWall == 0)
+				{
+					v3ItemPos.y = 0.5f;
+				}
+				
+				if (_nWall == 3)
+				{
+					v3ItemPos.y = -0.5f;
+				}
+
+				v3ItemPos.x = 0f;
+				v3ItemPos.z = 0f;
 			}
 			else if(_nWall == 1 || _nWall == 2)
 			{
 				_v3Pos.y += fCorrection;
+
+				if (_nWall == 1)
+				{
+					v3ItemPos.x = 0.5f;
+				}
+				
+				if (_nWall == 2)
+				{
+					v3ItemPos.x = -0.5f;
+				}
+
+				v3ItemPos.y = 0f;
+				v3ItemPos.z = 0f;
 			}
 		}
 		else if(turnFlag == 1)
@@ -317,10 +366,52 @@ public class PlatformManager : MonoBehaviour
 				if(_nWall == 0 || _nWall == 3)
 				{
 					_v3Pos.y -= fCorrection;
+
+					if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+					else if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+					
+					if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+					else if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+
+					v3ItemPos.y = 0f;
+					v3ItemPos.z = 0f;
 				}
 				else if(_nWall == 1 || _nWall == 2)
 				{
 					_v3Pos.x -= fCorrection;
+
+					if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+					else if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+
+					if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+					else if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+
+					v3ItemPos.x = 0f;
+					v3ItemPos.z = 0f;
 				}
 			}
 			else if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
@@ -328,10 +419,52 @@ public class PlatformManager : MonoBehaviour
 				if(_nWall == 0 || _nWall == 3)
 				{
 					_v3Pos.x -= fCorrection;
+
+					if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+					else if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+
+					if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+					else if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+
+					v3ItemPos.x = 0f;
+					v3ItemPos.z = 0f;
 				}
 				else if(_nWall == 1 || _nWall == 2)
 				{
 					_v3Pos.y -= fCorrection;
+
+					if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+					else if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+
+					if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+					else if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+
+					v3ItemPos.y = 0f;
+					v3ItemPos.z = 0f;
 				}
 			}
 		}
@@ -342,10 +475,52 @@ public class PlatformManager : MonoBehaviour
 				if(_nWall == 0 || _nWall == 3)
 				{
 					_v3Pos.y += fCorrection;
+
+					if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+					else if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+
+					if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+					else if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+
+					v3ItemPos.y = 0f;
+					v3ItemPos.z = 0f;
 				}
 				else if(_nWall == 1 || _nWall == 2)
 				{
 					_v3Pos.x += fCorrection;
+
+					if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+					else if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+
+					if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Left"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+					else if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Right"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+
+					v3ItemPos.x = 0f;
+					v3ItemPos.z = 0f;
 				}
 			}
 			else if(nowBottomLayer == LayerMask.NameToLayer("Bottom") || nowBottomLayer == LayerMask.NameToLayer("Top"))
@@ -353,13 +528,59 @@ public class PlatformManager : MonoBehaviour
 				if(_nWall == 0 || _nWall == 3)
 				{
 					_v3Pos.x += fCorrection;
+
+					if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+					else if (_nWall == 0 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+
+					if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.y = -0.5f;
+					}
+					else if (_nWall == 3 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.y = 0.5f;
+					}
+
+					v3ItemPos.x = 0f;
+					v3ItemPos.z = 0f;
 				}
 				else if(_nWall == 1 || _nWall == 2)
 				{
 					_v3Pos.y += fCorrection;
+
+					if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+					else if (_nWall == 1 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+
+					if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Bottom"))
+					{
+						v3ItemPos.x = -0.5f;
+					}
+					else if (_nWall == 2 && nowBottomLayer == LayerMask.NameToLayer("Top"))
+					{
+						v3ItemPos.x = 0.5f;
+					}
+
+					v3ItemPos.y = 0f;
+					v3ItemPos.z = 0f;
 				}
 			}
 		}
+
+		// 아이템 생성
+		//ItmManager.SpawnIfAvailable(_v3Pos + v3ItemPos);
+		CreateItem(_v3Pos + v3ItemPos, _nWall, _nIndex);
 	}
 
 	/**
@@ -392,7 +613,16 @@ public class PlatformManager : MonoBehaviour
 				        || _nLayer[0] == LayerMask.NameToLayer("Right") && _nLayer[1] == LayerMask.NameToLayer("Bottom")
 				        )
 				{
+					//Quaternion qq = obj.localRotation;
+					//qq.z += 90f;
+
+					//obj.rotation = Quaternion.Slerp(obj.localRotation, qq, Time.deltaTime);
 					obj.RotateAround(pos, Vector3.forward, 90f);
+					if (itemArray[i, k] != null)
+					{
+						itemArray[i, k].RotateAround(pos, Vector3.forward, 90f);
+					}
+					//ItmManager.transform.RotateAround(pos, Vector3.forward, 90f);
 					turnFlag = 1;
 				}
 				else if(_nLayer[0] == LayerMask.NameToLayer("Bottom") && _nLayer[1] == LayerMask.NameToLayer("Right")
@@ -403,6 +633,11 @@ public class PlatformManager : MonoBehaviour
 					
 				{
 					obj.RotateAround(pos, Vector3.forward, 270f);
+					if (itemArray[i, k] != null)
+					{
+						itemArray[i, k].RotateAround(pos, Vector3.forward, 270f);
+					}
+					//ItmManager.transform.RotateAround(pos, Vector3.forward, 270f);
 					turnFlag = 2;
 				}
 
@@ -436,6 +671,38 @@ public class PlatformManager : MonoBehaviour
 					nextRotation[i].z += 360;
 				}
 			}
+		}
+	}
+
+	/**
+	@brief 아이템 생성
+	@date 2014/04/07
+	@author SungMin Lee (bestdev@gameonstudio.co.kr)
+	@param Vector3 _v3Pos (아이템 생성 좌표)
+	@param int _nWall (아이템 생성 벽면)
+	@return void
+	@see 
+	@warning 
+	*/
+	public void CreateItem(Vector3 _v3Pos, int _nWall, int _nIndex)
+	{
+		float fRnd = Random.Range(0, 100);
+
+		if (ItemRate > fRnd)
+		{
+			//itemMaterials[1].SetColor("Item Mat", new Color(1f, 0f, 0f));
+			if (itemArray[_nWall, _nIndex] == null)
+			{
+				itemArray[_nWall, _nIndex] = Instantiate(ItemObject, _v3Pos, Random.rotation) as Transform;
+			}
+			else
+			{
+				itemArray[_nWall, _nIndex].localPosition = _v3Pos;
+			}
+
+			int nRegenIndex = Random.Range(0, itemMaterials.Length);
+
+			obj.renderer.material = itemMaterials[nRegenIndex];
 		}
 	}
 }
