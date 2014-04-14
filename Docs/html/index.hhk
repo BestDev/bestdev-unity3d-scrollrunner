@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_runner_8cs.html#a0e8c636830012f83bd01e58a45989d84"><param name="Name" value="_ANDROID"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a8f7f4c1ce7a4f933663d10543562b096"><param name="Name" value="About"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ac13b24988e13a8129702618c45618629"><param name="Name" value="AboutGUI"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#abf47c8f8f68e999b43776c166902663b"><param name="Name" value="AddItem"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a45c7acea1e760c6d730f48ef446e52dc"><param name="Name" value="ApplyPlatTurn"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a015e8e8211c24140065dfc92f5fba71b"><param name="Name" value="Args"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a470870b3c6a44b3fe2f57870e39cfe55"><param name="Name" value="AssestsFolder"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#abcad1d9903966462488d07a55532ec96"><param name="Name" value="basefile"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a7a4acfac0a07a2a05f183e4f0bc53b62"><param name="Name" value="BaseFileString"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a4af29323790d3da5708b4a1b4caa871a"><param name="Name" value="ChmFile"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ae808476c46f8357deed29bcea332768c"><param name="Name" value="ChmIndexEncoding"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a4831cd8744c394c29c2c4d9daa7ec796"><param name="Name" value="chrSize"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a96737a2d6bd9044894dd2136793a829c"><param name="Name" value="ClassDiagrams"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ac439d9ec5109d842ff9d545b5f3f4f5f"><param name="Name" value="Config"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#aaed13a997dde94a58f1f664661c9a898"><param name="Name" value="ConfigGUI"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a254f642527b45bc260048e30704edb39"><param name="Name" value="Configuration"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#abbfe267b99cb17eb7828488fbe38252b"><param name="Name" value="CreateItem"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a407b8cf7975d05767ab2be6ba6fd4e48"><param name="Name" value="CreateProgressString"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a82b41ae2e3c44b050acc7603031ccd55"><param name="Name" value="CurentOutput"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a48f0847aa4171868b6c8af966b7e7333"><param name="Name" value="CurrentOutput"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a031476bb87366d880b59de74ac0c576e"><param name="Name" value="deadPosY"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad179f3137dc60602ccc923623a5caed9"><param name="Name" value="DisplayHeadingToolbar"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a55e152c7a59888faa7f3f889351e70ba"><param name="Name" value="DisplayMode"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#aa9d210153bc5d5c01ec3694f5dc6ddbe"><param name="Name" value="distanceTraveled"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#aea9ba41fe61487effafbeb77120749f0"><param name="Name" value="DocDirectory"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a077740461a695c034da59b5350a91ed3"><param name="Name" value="DocsGenerated"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ae2a23d43b08dcb7eb465870229fc7ea4"><param name="Name" value="DotPath"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a34901097b2f19f593ad99f8cd31cc674"><param name="Name" value="DoxyfileCreateProgress"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a3d6d206835069e695d08c87b022f8eae"><param name="Name" value="DoxyFileEncoding"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2ac948405f6837da408af38fbb3bce94"><param name="Name" value="DoxyFileExists"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html"><param name="Name" value="DoxygenConfig"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a4af29323790d3da5708b4a1b4caa871a"><param name="Name" value="ChmFile"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ae808476c46f8357deed29bcea332768c"><param name="Name" value="ChmIndexEncoding"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a96737a2d6bd9044894dd2136793a829c"><param name="Name" value="ClassDiagrams"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#aea9ba41fe61487effafbeb77120749f0"><param name="Name" value="DocDirectory"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ae2a23d43b08dcb7eb465870229fc7ea4"><param name="Name" value="DotPath"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a3d6d206835069e695d08c87b022f8eae"><param name="Name" value="DoxyFileEncoding"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#af0ae22818cff4a23580d0d476373bbea"><param name="Name" value="ExtractAll"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a65b64c4c05fe2a7f485049cf2dd6f3e7"><param name="Name" value="ExtractPrivate"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a7f5a6c83e045b9e1a52f130392c5bfa2"><param name="Name" value="ExtractStatic"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#aa116dc2c2e416921b566187ca4c80494"><param name="Name" value="GenerateCHI"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a382693c448f7d42a33951edb14c34edc"><param name="Name" value="GenerateHtmlHelp"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a28899bb5b46cbd62cf905b4829498646"><param name="Name" value="HaveDot"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#acc3b571da0b8afd42de9cc3d417b2da6"><param name="Name" value="HHCLocation"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a2396ddc19246e7fc264f6b73ee8b11b5"><param name="Name" value="InputEncoding"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ac8e9f33eada3c1a9b99f83c9507be9b8"><param name="Name" value="MacroExpansion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a27ba67df81fe72016cd25f800f14a7dd"><param name="Name" value="OutputLanguage"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ad308ed1d0bdb202587fba232b754929f"><param name="Name" value="PathtoDoxygen"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ae69318495ba1db9f3a4d88e01764f9b4"><param name="Name" value="Project"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#aea53b2e7fc0f47a7f658ce25e65c4a09"><param name="Name" value="ScriptsDirectory"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a2b1926144ba2768c36de32a8d3445567"><param name="Name" value="Synopsis"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a824f425aa683d49247d5eb4092195de2"><param name="Name" value="UmlLook"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#af72cbcc553de9766a100f77f90c35626"><param name="Name" value="Version"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad58a5dc257ce9ca250e8d3449116214c"><param name="Name" value="DoxygenLog"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a25be008a208a986b9f7ed4d0bc97b496"><param name="Name" value="DoxygenOutput"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a20e7d1bdb1f32c97f600bf0f0bdb2358"><param name="Name" value="DoxygenOutputString"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html"><param name="Name" value="DoxygenWindow"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a8f7f4c1ce7a4f933663d10543562b096"><param name="Name" value="About"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ac13b24988e13a8129702618c45618629"><param name="Name" value="AboutGUI"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a470870b3c6a44b3fe2f57870e39cfe55"><param name="Name" value="AssestsFolder"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#abcad1d9903966462488d07a55532ec96"><param name="Name" value="basefile"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a7a4acfac0a07a2a05f183e4f0bc53b62"><param name="Name" value="BaseFileString"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ac439d9ec5109d842ff9d545b5f3f4f5f"><param name="Name" value="Config"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#aaed13a997dde94a58f1f664661c9a898"><param name="Name" value="ConfigGUI"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a254f642527b45bc260048e30704edb39"><param name="Name" value="Configuration"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a407b8cf7975d05767ab2be6ba6fd4e48"><param name="Name" value="CreateProgressString"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a82b41ae2e3c44b050acc7603031ccd55"><param name="Name" value="CurentOutput"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad179f3137dc60602ccc923623a5caed9"><param name="Name" value="DisplayHeadingToolbar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a55e152c7a59888faa7f3f889351e70ba"><param name="Name" value="DisplayMode"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a077740461a695c034da59b5350a91ed3"><param name="Name" value="DocsGenerated"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a34901097b2f19f593ad99f8cd31cc674"><param name="Name" value="DoxyfileCreateProgress"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2ac948405f6837da408af38fbb3bce94"><param name="Name" value="DoxyFileExists"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad58a5dc257ce9ca250e8d3449116214c"><param name="Name" value="DoxygenLog"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a25be008a208a986b9f7ed4d0bc97b496"><param name="Name" value="DoxygenOutput"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a20e7d1bdb1f32c97f600bf0f0bdb2358"><param name="Name" value="DoxygenOutputString"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a04a2fe9d8888fe40ded7c4dbb356eb43"><param name="Name" value="DoxyoutputProgress"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a32b919d18cfaca89383f6000dcc9c031"><param name="Name" value="Generate"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a22550b6648437b01aed667098462184d"><param name="Name" value="GenerateGUI"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a48f456c44b07cc9283a0583579b1d65a"><param name="Name" value="Init"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a45d09c9a64d2873367470303789e3bf9"><param name="Name" value="Instance"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a90d219aa71b1402344c3ba8911abf1e5"><param name="Name" value="LoadConfig"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a719e851548f08011b7cc1f1d0de44cda"><param name="Name" value="LoadSavedConfig"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#abf3c2a3c3a53e6691e58b865da8404de"><param name="Name" value="MakeNewDoxyFile"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#abbcaf2088b8039ad61726d4f117fb918"><param name="Name" value="OnDisable"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2809a93b756a6cfc371ee76a9d7168d7"><param name="Name" value="OnDoxygenFinished"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a17c26f4d5085459ee8a1e32fbe06bb9d"><param name="Name" value="OnEnable"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1e45df94b1f6cfea9a99f1e3c6920dd"><param name="Name" value="OnGUI"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a5ba38d9b1d93fa627bc3b53cdd1dda17"><param name="Name" value="readBaseConfig"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ae5bddf75fc118bfcdcf89178af0b137c"><param name="Name" value="reader"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a63924417d5b5b7a71570ec9a9ef1ca5e"><param name="Name" value="RunDoxygen"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2df895f6ab15062017644de848f70fdf"><param name="Name" value="SaveConfigtoEditor"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a5c798273b2084bdb2e59384cc5fc7988"><param name="Name" value="scroll"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#aff9bfc8c7ed3f017a61e67025ea7c99a"><param name="Name" value="SelectedTheme"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a6bab0bf619cae4e207e0e97ebc7b433b"><param name="Name" value="SetTheme"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2dfb0ba26737a0e996797c2848cc2fc0"><param name="Name" value="Themes"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a0c52f34973444c41e90151536dbd6e82"><param name="Name" value="UnityProjectID"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a8bde5475f165ba2ab4b9bda3118d128b"><param name="Name" value="ViewLog"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a942dbce786f3f791a235da931b5313e1"><param name="Name" value="DoxyLog"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a04a2fe9d8888fe40ded7c4dbb356eb43"><param name="Name" value="DoxyoutputProgress"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html"><param name="Name" value="DoxyRunner"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a015e8e8211c24140065dfc92f5fba71b"><param name="Name" value="Args"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a942dbce786f3f791a235da931b5313e1"><param name="Name" value="DoxyLog"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#aed7742f6732027e7427393d727898eba"><param name="Name" value="DoxyRunner"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a9e1ad0bb37f42899aeac2e2fb59cb769"><param name="Name" value="EscapeArguments"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a9661f03da50c7783e9bc99e2a92f14e6"><param name="Name" value="EXE"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a0923bf6769c3b99b4fb8e9ce67877a94"><param name="Name" value="FindExePath"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#ac1401822d6b3dea5626b786a94aa98d5"><param name="Name" value="onCompleteCallBack"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a7458975df0c43d397051f225d6def184"><param name="Name" value="Run"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a0a838402bf7b6661d4a1959c1b57aeb6"><param name="Name" value="RunThreadedDoxy"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a351a03f03f482a3fac5de95e5400f0bd"><param name="Name" value="SafeOutput"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a4474ed980f895f97ac3517fe85834259"><param name="Name" value="updateOuputString"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a6589351599a93fd0e43d5aaf0fe07231"><param name="Name" value="WorkingFolder"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html"><param name="Name" value="DoxyThreadSafeOutput"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a48f0847aa4171868b6c8af966b7e7333"><param name="Name" value="CurrentOutput"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#abc4a3143e7fa975e37fbd3d365c33dc8"><param name="Name" value="Finished"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a30e55e9b046c9cb5272db610839a0f30"><param name="Name" value="FullLog"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a676622488e7bec792b66693fc1f20e73"><param name="Name" value="isFinished"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#afc9e32fd7203a5c6c74ee914241c3e79"><param name="Name" value="isStarted"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#aa11a3b36a47b2e0a8f79fe879a286c33"><param name="Name" value="outputLock"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a40486922d565c2b83934fd8e863bf843"><param name="Name" value="ReadFullLog"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a84958c6ebe8de10ced504bf5f2fde015"><param name="Name" value="ReadLine"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a97e2149569e2bb5e749851daa2781423"><param name="Name" value="SetFinished"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#ad08186c77f145bc3cb1ddb50259ef589"><param name="Name" value="SetStarted"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#ab15b1f64cefedcefc4ace1405b869155"><param name="Name" value="Started"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#aa831eccd758e59c835fd3486c39a4a8c"><param name="Name" value="WriteFullLog"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#ab2083e9efa17a35c72d3c2c784ef6800"><param name="Name" value="WriteLine"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a543788488100a70f7fde7d95382b39d1"><param name="Name" value="endText"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a9e1ad0bb37f42899aeac2e2fb59cb769"><param name="Name" value="EscapeArguments"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a9661f03da50c7783e9bc99e2a92f14e6"><param name="Name" value="EXE"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#af0ae22818cff4a23580d0d476373bbea"><param name="Name" value="ExtractAll"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a65b64c4c05fe2a7f485049cf2dd6f3e7"><param name="Name" value="ExtractPrivate"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a7f5a6c83e045b9e1a52f130392c5bfa2"><param name="Name" value="ExtractStatic"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a230096e80672320f09c20fb4fc3c3070"><param name="Name" value="fCameraRot"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a0923bf6769c3b99b4fb8e9ce67877a94"><param name="Name" value="FindExePath"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#abc4a3143e7fa975e37fbd3d365c33dc8"><param name="Name" value="Finished"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a6e2e945ed3ae8d38c11f5d4199bc6c77"><param name="Name" value="fQueuePosition"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a30e55e9b046c9cb5272db610839a0f30"><param name="Name" value="FullLog"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#aefb329104b759f671f0de51864675074"><param name="Name" value="GameEvent"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html"><param name="Name" value="GameEventManager"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#aefb329104b759f671f0de51864675074"><param name="Name" value="GameEvent"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a44d1cda1a8cfb1f541a647ac2cbb99a9"><param name="Name" value="RunEnd"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a82865a6a40030eae74e3be566a96e7b8"><param name="Name" value="RunStart"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#aeb3b1442b7daa803bfa56a3057c4a685"><param name="Name" value="TriggerRunEnd"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a4a638b456ab0ef1a904e57a9a54023be"><param name="Name" value="TriggerRunStart"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1f6043062e30f52cb634b72294a5676a32b919d18cfaca89383f6000dcc9c031"><param name="Name" value="Generate"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#aa116dc2c2e416921b566187ca4c80494"><param name="Name" value="GenerateCHI"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a22550b6648437b01aed667098462184d"><param name="Name" value="GenerateGUI"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a382693c448f7d42a33951edb14c34edc"><param name="Name" value="GenerateHtmlHelp"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html"><param name="Name" value="GUIManager"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a543788488100a70f7fde7d95382b39d1"><param name="Name" value="endText"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#ac4bec2757cae7f62cf916e0a5a04ce72"><param name="Name" value="resultText"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#abbd9fdd3eabcb90d16e5fff47cef1310"><param name="Name" value="RunEnd"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#afa0894630d62fb3ca59356b83076663e"><param name="Name" value="RunStart"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a1e0192121eb9663380199fc172d1a2db"><param name="Name" value="Start"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a9574a204f252af1b5c32958e5dc562be"><param name="Name" value="startText"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#acd1d48a0805a01b0a4d52390d4a97768"><param name="Name" value="titleText"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a968f3c4d3f89116a8a3b491c7018a8db"><param name="Name" value="Update"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a8c81f557e1c1c0139dc275b64ccc819e"><param name="Name" value="guitext2"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ab78b4c5736135039dc42057b43ae1df7"><param name="Name" value="guitext"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a28899bb5b46cbd62cf905b4829498646"><param name="Name" value="HaveDot"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#acc3b571da0b8afd42de9cc3d417b2da6"><param name="Name" value="HHCLocation"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a48f456c44b07cc9283a0583579b1d65a"><param name="Name" value="Init"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a2396ddc19246e7fc264f6b73ee8b11b5"><param name="Name" value="InputEncoding"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a45d09c9a64d2873367470303789e3bf9"><param name="Name" value="Instance"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a676622488e7bec792b66693fc1f20e73"><param name="Name" value="isFinished"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#afc9e32fd7203a5c6c74ee914241c3e79"><param name="Name" value="isStarted"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af06ae982d31b7004b2ad0b8d6fd33f0c"><param name="Name" value="itemArray"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html"><param name="Name" value="ItemManager"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a950dc2b8465e74b2824e54728bd5c50a"><param name="Name" value="OnTriggerEnter"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a6a1fc2dd28afd1cd1f895e1eda8762fb"><param name="Name" value="rotVelocity"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a1764aef1dd43bb48eea5c44412172c78"><param name="Name" value="rycycleOffset"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#af16ac8ebf72828480b4e4bc73b33d414"><param name="Name" value="Start"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#aef5f4d34b139c407ebcff2b42bdbe995"><param name="Name" value="timerForDel"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a56e4287d269ba7d97ba18bb7bd20cf0f"><param name="Name" value="timerForDelLimit"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#aa8aa88e7df534b2c4d3bf7d4eaf8dcd8"><param name="Name" value="Update"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af075b57e47e273bc8d5d7d616c0d245b"><param name="Name" value="itemMaterials"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a733d01f724e8cf354a6f1c87f37b9a8f"><param name="Name" value="ItemObject"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a034434d3551f5ef3e4b27ff9acaf3d7f"><param name="Name" value="ItemRate"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a5c1b5b7c5fd1e89979b131c505fc2e22"><param name="Name" value="jumpCount"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ac89580fd5f43327628590b6f5beee4e1"><param name="Name" value="jumpPower"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ae97415a940a6f64df71f5234a9c187e6"><param name="Name" value="keySensitivity"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a90d219aa71b1402344c3ba8911abf1e5"><param name="Name" value="LoadConfig"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a719e851548f08011b7cc1f1d0de44cda"><param name="Name" value="LoadSavedConfig"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ac8e9f33eada3c1a9b99f83c9507be9b8"><param name="Name" value="MacroExpansion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#aea8dfb02a6205e60b5af43edeb563b19"><param name="Name" value="MainCamera"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#abf3c2a3c3a53e6691e58b865da8404de"><param name="Name" value="MakeNewDoxyFile"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a88905f95d6c1eaa97707c1cc416d771d"><param name="Name" value="maxSize"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ade8e1118b94dfd073086b3846014ad8a"><param name="Name" value="minSize"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ad00d686844f887c45f322633583bb75e"><param name="Name" value="nextPosition"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ae9cbc2c28ab9166b59d5c336c00dce9f"><param name="Name" value="nextRotation"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a8bba8623a7e42c5bca1da80993b622ca"><param name="Name" value="nNowWallIndex"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ae9ada369716bcd26730a3c3ac362aea0"><param name="Name" value="nowBottomLayer"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ad27fa0fc897e05760a0e7af2583f05cd"><param name="Name" value="numberOfObjects"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af6585dcf55f9180a61aa4c45db60c613"><param name="Name" value="obj"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a8a00b822c7779df82c0a889db464f505"><param name="Name" value="oldLayer"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a013b1d094c77369b713db2c5855f690b"><param name="Name" value="oldRunSpeed"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#aed9afe114b565073f684eb5f5a489c1c"><param name="Name" value="OnCollisionEnter"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#ac1401822d6b3dea5626b786a94aa98d5"><param name="Name" value="onCompleteCallBack"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#abbcaf2088b8039ad61726d4f117fb918"><param name="Name" value="OnDisable"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2809a93b756a6cfc371ee76a9d7168d7"><param name="Name" value="OnDoxygenFinished"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a17c26f4d5085459ee8a1e32fbe06bb9d"><param name="Name" value="OnEnable"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ad1e45df94b1f6cfea9a99f1e3c6920dd"><param name="Name" value="OnGUI"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a950dc2b8465e74b2824e54728bd5c50a"><param name="Name" value="OnTriggerEnter"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a27ba67df81fe72016cd25f800f14a7dd"><param name="Name" value="OutputLanguage"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#aa11a3b36a47b2e0a8f79fe879a286c33"><param name="Name" value="outputLock"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ad308ed1d0bdb202587fba232b754929f"><param name="Name" value="PathtoDoxygen"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a4d794f1e214c50950c8bd64344f4e07d"><param name="Name" value="pickItemCount"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aaa1e92882fb7bd21bfaaa60249e145e6"><param name="Name" value="platform"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a0c5780d2818d37b065dd712c49bdfdf2"><param name="Name" value="platformDifficulty"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html"><param name="Name" value="PlatformManager"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a45c7acea1e760c6d730f48ef446e52dc"><param name="Name" value="ApplyPlatTurn"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#abbfe267b99cb17eb7828488fbe38252b"><param name="Name" value="CreateItem"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a6e2e945ed3ae8d38c11f5d4199bc6c77"><param name="Name" value="fQueuePosition"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af06ae982d31b7004b2ad0b8d6fd33f0c"><param name="Name" value="itemArray"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af075b57e47e273bc8d5d7d616c0d245b"><param name="Name" value="itemMaterials"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a733d01f724e8cf354a6f1c87f37b9a8f"><param name="Name" value="ItemObject"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a034434d3551f5ef3e4b27ff9acaf3d7f"><param name="Name" value="ItemRate"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a88905f95d6c1eaa97707c1cc416d771d"><param name="Name" value="maxSize"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ade8e1118b94dfd073086b3846014ad8a"><param name="Name" value="minSize"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ad00d686844f887c45f322633583bb75e"><param name="Name" value="nextPosition"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ae9cbc2c28ab9166b59d5c336c00dce9f"><param name="Name" value="nextRotation"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a8bba8623a7e42c5bca1da80993b622ca"><param name="Name" value="nNowWallIndex"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ae9ada369716bcd26730a3c3ac362aea0"><param name="Name" value="nowBottomLayer"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ad27fa0fc897e05760a0e7af2583f05cd"><param name="Name" value="numberOfObjects"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af6585dcf55f9180a61aa4c45db60c613"><param name="Name" value="obj"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aaa1e92882fb7bd21bfaaa60249e145e6"><param name="Name" value="platform"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a0c5780d2818d37b065dd712c49bdfdf2"><param name="Name" value="platformDifficulty"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ac6a76cfced074bca9f8e4531c92dbade"><param name="Name" value="Recycle"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a215fa8bea376cb1bf5080c923e623951"><param name="Name" value="recycleOffset"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a17806305b016b81916ea6c858905df84"><param name="Name" value="roadMaterials"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a6cb1275781bb712c273e84fdabd86eb4"><param name="Name" value="RunEnd"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aa997bf8df980cdab51db9ef9e190a437"><param name="Name" value="RunStart"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aba295fca640d4a02abaf5d452fdff9bf"><param name="Name" value="Start"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a6cefe92f3d7a975d82ded8886a6021e3"><param name="Name" value="startPosition"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af5388b7dfec598f97791f5ed2ae95c0f"><param name="Name" value="startRotation"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a79a9e8cf57b8834345fe214a02da3413"><param name="Name" value="trapMaterials"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ad764c7b363c104a1cdce542304b4e7ad"><param name="Name" value="trapRegenPercent"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aa144bed1ea38c2383a89ad79917158c7"><param name="Name" value="turnFlag"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a914e35b11ef5be9adc5cf2b1ed1a333e"><param name="Name" value="Update"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a35aa5ff186fd478955da46a032f93647"><param name="Name" value="wallArray"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a3f5592721d2568ff43adc40dfe27361c"><param name="Name" value="WallPosCorrection"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#ae69318495ba1db9f3a4d88e01764f9b4"><param name="Name" value="Project"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a5ba38d9b1d93fa627bc3b53cdd1dda17"><param name="Name" value="readBaseConfig"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#ae5bddf75fc118bfcdcf89178af0b137c"><param name="Name" value="reader"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a40486922d565c2b83934fd8e863bf843"><param name="Name" value="ReadFullLog"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a84958c6ebe8de10ced504bf5f2fde015"><param name="Name" value="ReadLine"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ac6a76cfced074bca9f8e4531c92dbade"><param name="Name" value="Recycle"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a215fa8bea376cb1bf5080c923e623951"><param name="Name" value="recycleOffset"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#ac4bec2757cae7f62cf916e0a5a04ce72"><param name="Name" value="resultText"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a17806305b016b81916ea6c858905df84"><param name="Name" value="roadMaterials"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a6a1fc2dd28afd1cd1f895e1eda8762fb"><param name="Name" value="rotVelocity"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a7458975df0c43d397051f225d6def184"><param name="Name" value="Run"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a63924417d5b5b7a71570ec9a9ef1ca5e"><param name="Name" value="RunDoxygen"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a44d1cda1a8cfb1f541a647ac2cbb99a9"><param name="Name" value="RunEnd"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a44d1cda1a8cfb1f541a647ac2cbb99a9"><param name="Name" value="GameEventManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#abbd9fdd3eabcb90d16e5fff47cef1310"><param name="Name" value="GUIManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a6cb1275781bb712c273e84fdabd86eb4"><param name="Name" value="PlatformManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a48969566715e9747aaf4f3965b80355b"><param name="Name" value="Runner"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html"><param name="Name" value="Runner"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_runner_8cs.html"><param name="Name" value="Runner.cs"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html"><param name="Name" value="Runner"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#abf47c8f8f68e999b43776c166902663b"><param name="Name" value="AddItem"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a4831cd8744c394c29c2c4d9daa7ec796"><param name="Name" value="chrSize"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a031476bb87366d880b59de74ac0c576e"><param name="Name" value="deadPosY"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#aa9d210153bc5d5c01ec3694f5dc6ddbe"><param name="Name" value="distanceTraveled"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a230096e80672320f09c20fb4fc3c3070"><param name="Name" value="fCameraRot"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ab78b4c5736135039dc42057b43ae1df7"><param name="Name" value="guitext"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a8c81f557e1c1c0139dc275b64ccc819e"><param name="Name" value="guitext2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a5c1b5b7c5fd1e89979b131c505fc2e22"><param name="Name" value="jumpCount"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ac89580fd5f43327628590b6f5beee4e1"><param name="Name" value="jumpPower"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ae97415a940a6f64df71f5234a9c187e6"><param name="Name" value="keySensitivity"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#aea8dfb02a6205e60b5af43edeb563b19"><param name="Name" value="MainCamera"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a8a00b822c7779df82c0a889db464f505"><param name="Name" value="oldLayer"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a013b1d094c77369b713db2c5855f690b"><param name="Name" value="oldRunSpeed"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#aed9afe114b565073f684eb5f5a489c1c"><param name="Name" value="OnCollisionEnter"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a4d794f1e214c50950c8bd64344f4e07d"><param name="Name" value="pickItemCount"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a48969566715e9747aaf4f3965b80355b"><param name="Name" value="RunEnd"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ae68bd03c34e92362988a533ea1e1f42f"><param name="Name" value="RunnerControl"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a3c67adc637b18a7531d6d1b9d2354779"><param name="Name" value="runSpeed"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ad4cfbb5fe55639d35a8923604bb452ba"><param name="Name" value="RunStart"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a8ca1759965a257342f8fe6ff03586f18"><param name="Name" value="Start"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a16fd05b514e97e6998f1417dc1362b7a"><param name="Name" value="startPosition"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a6e2d95ec0c007d5351a452055ac493d6"><param name="Name" value="touchingTile"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a4e7634e96c6ed40bb8be7af58ea0b84f"><param name="Name" value="touchType"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a39531bfc2216131f9e046609c5f5f0ca"><param name="Name" value="turnCount"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a0a77ae524280793a8fca099c16dabf3e"><param name="Name" value="Update"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ae68bd03c34e92362988a533ea1e1f42f"><param name="Name" value="RunnerControl"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a3c67adc637b18a7531d6d1b9d2354779"><param name="Name" value="runSpeed"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a82865a6a40030eae74e3be566a96e7b8"><param name="Name" value="RunStart"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a82865a6a40030eae74e3be566a96e7b8"><param name="Name" value="GameEventManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#afa0894630d62fb3ca59356b83076663e"><param name="Name" value="GUIManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aa997bf8df980cdab51db9ef9e190a437"><param name="Name" value="PlatformManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#ad4cfbb5fe55639d35a8923604bb452ba"><param name="Name" value="Runner"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a0a838402bf7b6661d4a1959c1b57aeb6"><param name="Name" value="RunThreadedDoxy"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a1764aef1dd43bb48eea5c44412172c78"><param name="Name" value="rycycleOffset"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a351a03f03f482a3fac5de95e5400f0bd"><param name="Name" value="SafeOutput"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2df895f6ab15062017644de848f70fdf"><param name="Name" value="SaveConfigtoEditor"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#aea53b2e7fc0f47a7f658ce25e65c4a09"><param name="Name" value="ScriptsDirectory"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a5c798273b2084bdb2e59384cc5fc7988"><param name="Name" value="scroll"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#aff9bfc8c7ed3f017a61e67025ea7c99a"><param name="Name" value="SelectedTheme"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#a97e2149569e2bb5e749851daa2781423"><param name="Name" value="SetFinished"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#ad08186c77f145bc3cb1ddb50259ef589"><param name="Name" value="SetStarted"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a6bab0bf619cae4e207e0e97ebc7b433b"><param name="Name" value="SetTheme"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a1e0192121eb9663380199fc172d1a2db"><param name="Name" value="Start"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a1e0192121eb9663380199fc172d1a2db"><param name="Name" value="GUIManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#af16ac8ebf72828480b4e4bc73b33d414"><param name="Name" value="ItemManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aba295fca640d4a02abaf5d452fdff9bf"><param name="Name" value="PlatformManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a8ca1759965a257342f8fe6ff03586f18"><param name="Name" value="Runner"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#ab15b1f64cefedcefc4ace1405b869155"><param name="Name" value="Started"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a6cefe92f3d7a975d82ded8886a6021e3"><param name="Name" value="startPosition"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a6cefe92f3d7a975d82ded8886a6021e3"><param name="Name" value="PlatformManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a16fd05b514e97e6998f1417dc1362b7a"><param name="Name" value="Runner"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#af5388b7dfec598f97791f5ed2ae95c0f"><param name="Name" value="startRotation"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a9574a204f252af1b5c32958e5dc562be"><param name="Name" value="startText"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a2b1926144ba2768c36de32a8d3445567"><param name="Name" value="Synopsis"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a2dfb0ba26737a0e996797c2848cc2fc0"><param name="Name" value="Themes"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#aef5f4d34b139c407ebcff2b42bdbe995"><param name="Name" value="timerForDel"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#a56e4287d269ba7d97ba18bb7bd20cf0f"><param name="Name" value="timerForDelLimit"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#acd1d48a0805a01b0a4d52390d4a97768"><param name="Name" value="titleText"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a6e2d95ec0c007d5351a452055ac493d6"><param name="Name" value="touchingTile"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a4e7634e96c6ed40bb8be7af58ea0b84f"><param name="Name" value="touchType"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a79a9e8cf57b8834345fe214a02da3413"><param name="Name" value="trapMaterials"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#ad764c7b363c104a1cdce542304b4e7ad"><param name="Name" value="trapRegenPercent"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#aeb3b1442b7daa803bfa56a3057c4a685"><param name="Name" value="TriggerRunEnd"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_game_event_manager.html#a4a638b456ab0ef1a904e57a9a54023be"><param name="Name" value="TriggerRunStart"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a39531bfc2216131f9e046609c5f5f0ca"><param name="Name" value="turnCount"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#aa144bed1ea38c2383a89ad79917158c7"><param name="Name" value="turnFlag"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#a824f425aa683d49247d5eb4092195de2"><param name="Name" value="UmlLook"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a0c52f34973444c41e90151536dbd6e82"><param name="Name" value="UnityProjectID"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a968f3c4d3f89116a8a3b491c7018a8db"><param name="Name" value="Update"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_g_u_i_manager.html#a968f3c4d3f89116a8a3b491c7018a8db"><param name="Name" value="GUIManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_item_manager.html#aa8aa88e7df534b2c4d3bf7d4eaf8dcd8"><param name="Name" value="ItemManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a914e35b11ef5be9adc5cf2b1ed1a333e"><param name="Name" value="PlatformManager"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_runner.html#a0a77ae524280793a8fca099c16dabf3e"><param name="Name" value="Runner"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a4474ed980f895f97ac3517fe85834259"><param name="Name" value="updateOuputString"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_config.html#af72cbcc553de9766a100f77f90c35626"><param name="Name" value="Version"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxygen_window.html#a8bde5475f165ba2ab4b9bda3118d128b"><param name="Name" value="ViewLog"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a35aa5ff186fd478955da46a032f93647"><param name="Name" value="wallArray"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_platform_manager.html#a3f5592721d2568ff43adc40dfe27361c"><param name="Name" value="WallPosCorrection"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_runner.html#a6589351599a93fd0e43d5aaf0fe07231"><param name="Name" value="WorkingFolder"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#aa831eccd758e59c835fd3486c39a4a8c"><param name="Name" value="WriteFullLog"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_doxy_thread_safe_output.html#ab2083e9efa17a35c72d3c2c784ef6800"><param name="Name" value="WriteLine"></OBJECT>
+</UL>
+</BODY>
+</HTML>

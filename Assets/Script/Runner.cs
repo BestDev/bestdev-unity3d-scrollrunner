@@ -20,8 +20,6 @@
  * @brief 캐릭터 컨트롤 스크립트
  */
 
-#define _ANDROID
-//#define _PC
 
 using UnityEngine;
 using System.Collections;
@@ -39,7 +37,7 @@ public class Runner : MonoBehaviour
 	public float jumpPower = 7;	///< 캐릭터 점프 강도
 
 	public float deadPosY = -20;	///< 캐릭터 사망 처리 y좌표
-	public int touchType = 1;	///< 모바일 조작 방식 옵션 (0 : 슬라이드 이동, 1 : 터치유지 이동)
+	public int touchType = 1;	///< 모바일 조작 방식 옵션 (0 : 터치유지 이동, 1 : 좌측 터치 이동 / 우측 터치 점프)
 	
 	public GUIText guitext;
 	public GUIText guitext2;
@@ -51,6 +49,8 @@ public class Runner : MonoBehaviour
 
 	private Vector3 startPosition;	///< 캐릭터 게임 시작 위치
 	private float fCameraRot = 0;	///< 카메라 회전 각도
+
+	private float fHorizontal = 0f;	///< 캐릭터 좌 / 우 이동 (x > 0 : 우측 / x < 0 : 좌측)
 
 	// Use this for initialization
 	void Start ()
@@ -262,9 +262,9 @@ public class Runner : MonoBehaviour
 		
 		transform.localScale = scale;
 
-		guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " locpos : " + transform.localPosition + " gbpos : " + transform.position;
+		//guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " locpos : " + transform.localPosition + " gbpos : " + transform.position;
 
-#if _PC
+#if UNITY_STANDALONE_WIN
 		// 좌우 키 입력
 		float keySide = Input.GetAxis("Horizontal");
 		transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * keySide);
@@ -278,13 +278,49 @@ public class Runner : MonoBehaviour
 			jumpCount++;
 		}
 #endif
-		
-#if _ANDROID
+
+#if UNITY_ANDROID
 		// 스마트폰 터치 좌우 이동
 		// 조작 방식에 대한 추가 및 수정 필요
-		// 0 : 슬라이드 이동
+		// 0 : 터치유지 이동
 		if (touchType == 0)
 		{
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
+			{
+				Vector2 touchPosition = Input.GetTouch(0).position;
+
+				Camera cam = Camera.main;
+
+				//guitext.text = "touchpos " + touchPosition;
+
+				if (touchPosition.x >= cam.pixelWidth / 2f)
+				{
+					fHorizontal = 1;
+				}
+				else if (touchPosition.x < cam.pixelWidth / 2f)
+				{
+					fHorizontal = -1;
+				}
+
+				// 이속에 따른 좌우 이동 처리 안하고 고정 값으로 처리
+				//transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * fHorizontal);
+				transform.Translate(Vector3.right * 2 * Time.deltaTime * fHorizontal);
+			}
+
+			//guitext.text = "touchphase " + Input.GetTouch(0).phase + " tchTile " + touchingTile + " tchCnt " + Input.touchCount + " pos " + transform.localPosition;
+
+			// 터치 점프
+			if (touchingTile && Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary && Input.GetTouch(1).phase == TouchPhase.Stationary) || (Input.GetTouch(0).phase == TouchPhase.Stationary && Input.GetTouch(1).phase == TouchPhase.Stationary))
+			{
+				if (transform.localPosition.y > -2f && transform.localPosition.y < -1f)
+				{
+					rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
+					jumpCount++;
+				}
+
+				touchingTile = false;
+			}
+			/*
 			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
 			{
 				Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
@@ -304,45 +340,85 @@ public class Runner : MonoBehaviour
 					jumpCount++;
 				}
 			}
+			*/
 		}
-		// 1 : 터치유지 이동
+		// 1 : 좌측 터치 이동 / 우측 터치 점프
 		else if (touchType == 1)
 		{
-			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
+			Camera cam = Camera.main;
+			Vector2 touchPosition = Input.GetTouch(0).position;
+
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
 			{
-				Vector2 touchPosition = Input.GetTouch(0).position;
+				Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 
-				Camera cam = Camera.main;
-
-				guitext.text = "touchpos " + touchPosition;
-
-				float fHorizontal = 0f;
-				if (touchPosition.x >= cam.pixelWidth / 2f)
+				if (touchPosition.x < cam.pixelWidth / 2f)
 				{
-					fHorizontal = 1;
+					if (touchDeltaPosition.x > 0)
+					{
+						fHorizontal = 1;
+					}
+					else if (touchDeltaPosition.x < 0)
+					{
+						fHorizontal = -1;
+					}
+
+					transform.Translate(Vector3.right * 3 * Time.deltaTime * fHorizontal);
 				}
-				else if (touchPosition.x < cam.pixelWidth / 2f)
-				{
-					fHorizontal = -1;
-				}
-				
-				// 이속에 따른 좌우 이동 처리 안하고 고정 값으로 처리
-				//transform.Translate(Vector3.right * (runSpeed / keySensitivity) * Time.deltaTime * fHorizontal);
-				transform.Translate(Vector3.right * 2 * Time.deltaTime * fHorizontal);
 			}
 
-			guitext.text = "touchphase " + Input.GetTouch(0).phase + " tchTile " + touchingTile + " tchCnt " + Input.touchCount + " pos " + transform.localPosition;
-
-			// 터치 점프
-			if (touchingTile && Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary && Input.GetTouch(1).phase == TouchPhase.Stationary) || (Input.GetTouch(0).phase == TouchPhase.Stationary && Input.GetTouch(1).phase == TouchPhase.Stationary))
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
 			{
-				if (transform.localPosition.y > -2f && transform.localPosition.y < -1f)
+				if (touchPosition.x < cam.pixelWidth / 2f)
 				{
-					rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
-					jumpCount++;
+					transform.Translate(Vector3.right * 3 * Time.deltaTime * fHorizontal);
 				}
+			}
 
-				touchingTile = false;
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+			{
+				if (touchPosition.x < cam.pixelWidth / 2f)
+				{
+					fHorizontal = 0;
+
+					//transform.Translate(Vector3.right * 2 * Time.deltaTime * fHorizontal);
+				}
+			}
+
+			//	//guitext.text = "tchpos " + touchPosition + " tchpos1 " + touchPosition1 + " cam.pixedwid " + cam.pixelWidth;
+			//	//guitext.text = "tchpos " + touchPosition + " cam.pixedwid " + cam.pixelWidth;
+
+			//guitext.text = "touchpos " + touchPosition + " touchpos1 " + touchPosition1;
+
+			// 우측 터치 점프
+			if (touchingTile && Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began))
+			{
+				if (touchPosition.x >= cam.pixelWidth / 2f)
+				{
+					if (transform.localPosition.y > -2f && transform.localPosition.y < -1f)
+					{
+						rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
+						jumpCount++;
+					}
+
+					touchingTile = false;
+				}
+			}
+
+			touchPosition = Input.GetTouch(1).position;
+
+			if (touchingTile && Input.touchCount > 0 && (Input.GetTouch(1).phase == TouchPhase.Began))
+			{
+				if (touchPosition.x >= cam.pixelWidth / 2f)
+				{
+					if (transform.localPosition.y > -2f && transform.localPosition.y < -1f)
+					{
+						rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
+						jumpCount++;
+					}
+
+					touchingTile = false;
+				}
 			}
 		}
 #endif

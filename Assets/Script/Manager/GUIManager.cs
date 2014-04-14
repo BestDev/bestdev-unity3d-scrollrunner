@@ -26,17 +26,21 @@ public class GUIManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+#if UNITY_STANDALONE_WIN
 		// PC 시작
 		if(Input.GetButtonDown("Jump"))
 		{
 			GameEventManager.TriggerRunStart();
 		}
+#endif
 
+#if UNITY_ANDROID
 		// 모바일 시작
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
 		{
 			GameEventManager.TriggerRunStart();
 		}
+#endif
 	}
 
 	private void RunStart()

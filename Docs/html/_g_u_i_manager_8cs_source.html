@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>GOSRun: D:/_MobileProject/TestProject/ScrollRunner/Assets/Script/Manager/GUIManager.cs 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">GOSRun
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   <div id="projectbrief">GOS 3D Running Mobile Game</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.6 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>메인&#160;페이지</span></a></li>
+      <li><a href="annotated.html"><span>클래스</span></a></li>
+      <li class="current"><a href="files.html"><span>파일들</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>파일&#160;목록</span></a></li>
+      <li><a href="globals.html"><span>파일&#160;멤버</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_004655f1e8b2fa1f445114117a3053f4.html">Script</a></li><li class="navelem"><a class="el" href="dir_3391c51169966536c785a8b744f2f720.html">Manager</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">GUIManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_g_u_i_manager_8cs.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> UnityEngine;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> System.Collections;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_g_u_i_manager.html">   11</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_g_u_i_manager.html">GUIManager</a> : MonoBehaviour</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_g_u_i_manager.html#acd1d48a0805a01b0a4d52390d4a97768">   13</a></span>&#160;    <span class="keyword">public</span> GUIText <a class="code" href="class_g_u_i_manager.html#a9574a204f252af1b5c32958e5dc562be">startText</a>, <a class="code" href="class_g_u_i_manager.html#a543788488100a70f7fde7d95382b39d1">endText</a>, <a class="code" href="class_g_u_i_manager.html#acd1d48a0805a01b0a4d52390d4a97768">titleText</a>, <a class="code" href="class_g_u_i_manager.html#ac4bec2757cae7f62cf916e0a5a04ce72">resultText</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">// Use this for initialization</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_g_u_i_manager.html#a1e0192121eb9663380199fc172d1a2db">   15</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_u_i_manager.html#a1e0192121eb9663380199fc172d1a2db">Start</a> ()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        GameEventManager.RunStart += <a class="code" href="class_g_u_i_manager.html#afa0894630d62fb3ca59356b83076663e">RunStart</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        GameEventManager.RunEnd += <a class="code" href="class_g_u_i_manager.html#abbd9fdd3eabcb90d16e5fff47cef1310">RunEnd</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        endText.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">//resultText.transform.position = new Vector3(0.5f, 0.4f, 0);</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        resultText.text = <span class="stringliteral">&quot;Jump (up arrow)\nRed (Speed Up) / Blue (Speed Down)\nPink (Camera Left Turn)\nYellow (Camera Right Turn)\nWhite (Camera 180º Turn)&quot;</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        resultText.enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Update is called once per frame</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_g_u_i_manager.html#a968f3c4d3f89116a8a3b491c7018a8db">   27</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_u_i_manager.html#a968f3c4d3f89116a8a3b491c7018a8db">Update</a> ()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// PC 시작</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span>(Input.GetButtonDown(<span class="stringliteral">&quot;Jump&quot;</span>))</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            GameEventManager.TriggerRunStart();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// 모바일 시작</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">if</span> (Input.touchCount &gt; 0 &amp;&amp; Input.GetTouch(0).phase == TouchPhase.Began)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            GameEventManager.TriggerRunStart();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_g_u_i_manager.html#afa0894630d62fb3ca59356b83076663e">   42</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_g_u_i_manager.html#afa0894630d62fb3ca59356b83076663e">RunStart</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        endText.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        titleText.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        startText.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        resultText.enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_g_u_i_manager.html#abbd9fdd3eabcb90d16e5fff47cef1310">   51</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_g_u_i_manager.html#abbd9fdd3eabcb90d16e5fff47cef1310">RunEnd</a>()</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">float</span> fRundistance = Runner.distanceTraveled - 1f;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        resultText.text = <span class="stringliteral">&quot;Run distance : &quot;</span> + fRundistance + <span class="stringliteral">&quot;m\n&quot;</span> + <span class="stringliteral">&quot;Jump Count : &quot;</span> + Runner.jumpCount + <span class="stringliteral">&quot;\nTurn Count : &quot;</span> + Runner.turnCount + <span class="stringliteral">&quot;\nTotal Item : &quot;</span> + Runner.pickItemCount + <span class="stringliteral">&quot;\nLast Difficulty : &quot;</span> + <a class="code" href="class_platform_manager.html#a0c5780d2818d37b065dd712c49bdfdf2">PlatformManager.platformDifficulty</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        resultText.enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        endText.enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        startText.enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="ttc" id="class_g_u_i_manager_html"><div class="ttname"><a href="class_g_u_i_manager.html">GUIManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00011">GUIManager.cs:11</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_abbd9fdd3eabcb90d16e5fff47cef1310"><div class="ttname"><a href="class_g_u_i_manager.html#abbd9fdd3eabcb90d16e5fff47cef1310">GUIManager.RunEnd</a></div><div class="ttdeci">void RunEnd()</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00051">GUIManager.cs:51</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_a9574a204f252af1b5c32958e5dc562be"><div class="ttname"><a href="class_g_u_i_manager.html#a9574a204f252af1b5c32958e5dc562be">GUIManager.startText</a></div><div class="ttdeci">GUIText startText</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00013">GUIManager.cs:13</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_a1e0192121eb9663380199fc172d1a2db"><div class="ttname"><a href="class_g_u_i_manager.html#a1e0192121eb9663380199fc172d1a2db">GUIManager.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00015">GUIManager.cs:15</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_afa0894630d62fb3ca59356b83076663e"><div class="ttname"><a href="class_g_u_i_manager.html#afa0894630d62fb3ca59356b83076663e">GUIManager.RunStart</a></div><div class="ttdeci">void RunStart()</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00042">GUIManager.cs:42</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_a543788488100a70f7fde7d95382b39d1"><div class="ttname"><a href="class_g_u_i_manager.html#a543788488100a70f7fde7d95382b39d1">GUIManager.endText</a></div><div class="ttdeci">GUIText endText</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00013">GUIManager.cs:13</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_acd1d48a0805a01b0a4d52390d4a97768"><div class="ttname"><a href="class_g_u_i_manager.html#acd1d48a0805a01b0a4d52390d4a97768">GUIManager.titleText</a></div><div class="ttdeci">GUIText titleText</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00013">GUIManager.cs:13</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_a968f3c4d3f89116a8a3b491c7018a8db"><div class="ttname"><a href="class_g_u_i_manager.html#a968f3c4d3f89116a8a3b491c7018a8db">GUIManager.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00027">GUIManager.cs:27</a></div></div>
+<div class="ttc" id="class_platform_manager_html_a0c5780d2818d37b065dd712c49bdfdf2"><div class="ttname"><a href="class_platform_manager.html#a0c5780d2818d37b065dd712c49bdfdf2">PlatformManager.platformDifficulty</a></div><div class="ttdeci">static float platformDifficulty</div><div class="ttdoc">바닥 타일 배치 난이도 (0 : Hard ~ 100 : Easy) </div><div class="ttdef"><b>Definition:</b> <a href="_platform_manager_8cs_source.html#l00028">PlatformManager.cs:28</a></div></div>
+<div class="ttc" id="class_g_u_i_manager_html_ac4bec2757cae7f62cf916e0a5a04ce72"><div class="ttname"><a href="class_g_u_i_manager.html#ac4bec2757cae7f62cf916e0a5a04ce72">GUIManager.resultText</a></div><div class="ttdeci">GUIText resultText</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_manager_8cs_source.html#l00013">GUIManager.cs:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+생성시간 : 금 4월 11 2014 16:30:03, 프로젝트명 : GOSRun, 생성자 :  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>
