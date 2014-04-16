@@ -10,3 +10,5 @@ _Distribute/
 /*.suo
 /*.user
 /*.pidb
+/*.DotSettings
+/*.userprefs
