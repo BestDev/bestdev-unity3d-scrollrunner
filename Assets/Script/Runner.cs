@@ -224,7 +224,7 @@ public class Runner : MonoBehaviour
 		// 레이어 체크로 바꿔야 함
 		if(strMaterial == "Tile Fast Mat (Instance)")
 		{
-			if(runSpeed < 10)
+			if(runSpeed < 12)
 			{
 				runSpeed += 1;
 			}

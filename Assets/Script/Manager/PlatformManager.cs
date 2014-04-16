@@ -90,7 +90,7 @@ public class PlatformManager : MonoBehaviour
 		nNowWallIndex = 0;
         turnFlag = 0;
 
-		if(platformDifficulty < 60)
+		if(platformDifficulty < 50)
 		{
 			platformDifficulty = 95;
 		}
@@ -156,14 +156,14 @@ public class PlatformManager : MonoBehaviour
 
 				//if((int)platformDifficulty % 10 == 0)
 				{
-					if(Player.GetComponent<Runner>().runSpeed < 10)
+					if(Player.GetComponent<Runner>().runSpeed < 12)
 					{
 						Player.GetComponent<Runner>().runSpeed += 1;
 					}
 				}
 
 				// 난이도 60 이하로 내려갈 경우 다시 95부터 반복
-				if(platformDifficulty < 60)
+				if(platformDifficulty < 50)
 				{
 					platformDifficulty = 95;
 				}

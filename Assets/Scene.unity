@@ -221,7 +221,7 @@ Prefab:
       objectReference: {fileID: 1022758302}
     - target: {fileID: 11400000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
       propertyPath: touchType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fceec6718f057e4eb77bb6cd4c17d1a, type: 2}
@@ -359,7 +359,7 @@ MonoBehaviour:
   keySensitivity: 3
   jumpPower: 7
   deadPosY: -20
-  touchType: 1
+  touchType: 0
   guitext: {fileID: 2072216436}
   guitext2: {fileID: 1022758302}
 --- !u!54 &517483106

@@ -11,7 +11,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: GOS
-  productName: GOSRunB
+  productName: GOSRunA
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
@@ -73,7 +73,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.GOS.GOSRunB
+  iPhoneBundleIdentifier: com.GOS.GOSRunA
   productGUID: 617c708e194d21d4092dbfa8180354ed
   iPhoneBundleVersion: 0.1
   AndroidBundleVersionCode: 1
