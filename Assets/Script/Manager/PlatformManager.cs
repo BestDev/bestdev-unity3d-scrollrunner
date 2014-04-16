@@ -24,8 +24,10 @@ public class PlatformManager : MonoBehaviour
 	public Material roadMaterials;  ///< 일반 바닥면 메터리얼
 	public Material[] trapMaterials;    ///< 함정 바닥면 메터리얼
 	public float[] trapRegenPercent;    ///< 함정 생성 확률 (100분률)
-	
-	public static float platformDifficulty = 95;    ///< 바닥 타일 배치 난이도 (0 : Hard ~ 100 : Easy)
+
+	public static int[] turnLayer;
+
+	public static float platformDifficulty = 100;    ///< 바닥 타일 배치 난이도 (0 : Hard ~ 100 : Easy)
     public Transform[,] wallArray;  ///< 바닥면 관리 배열 (해당 배열내 바닥면 재활용)
 
 	public Transform ItemObject;	///< 아이템 오브젝트
@@ -140,6 +142,12 @@ public class PlatformManager : MonoBehaviour
 				nNowWallIndex = 0;
 			}
 
+			// 최초 난이도 100일 경우 30m이후 난이도 상승
+			if (platformDifficulty == 100 && (int)Runner.distanceTraveled % 30 == 0)
+			{
+				platformDifficulty -= 5;
+			}
+
 			// 일정 거리 이동 시 난이도 상승 및 이동속도 상승
 			// 100타일마다 난이도 및 이속 변경
 			if((int)Runner.distanceTraveled % 100 == 0)
@@ -162,6 +170,11 @@ public class PlatformManager : MonoBehaviour
 			}
 		}
 
+		//if (turnLayer != null)
+		//{
+		//	ApplyPlatTurn(turnLayer);
+		//	turnLayer = null;
+		//}
 	}
 	
 	/**
@@ -203,10 +216,12 @@ public class PlatformManager : MonoBehaviour
 
 		float fSizeRnd = (int)Random.Range(minSize.x, maxSize.x);
 		float fHeightRnd = Random.Range(minSize.y, maxSize.y);
-		
+		float fFrontRnd = Random.Range(minSize.z, maxSize.z);
+
+		//Debug.Log(fFrontRnd);
 		//Vector3 scale = new Vector3(fSizeRnd, minSize.y, minSize.z);
-		Vector3 scale = new Vector3(fSizeRnd, fHeightRnd, minSize.z);
-		
+		Vector3 scale = new Vector3(fSizeRnd, fHeightRnd, fFrontRnd);
+		//Debug.Log(scale);
 		Vector3 position = nextPosition[_nWall];
 
 		int nPosRnd = Random.Range(0, 4);
@@ -257,6 +272,20 @@ public class PlatformManager : MonoBehaviour
 		else
 		{
 			obj.renderer.material = roadMaterials;
+
+			// 벽면 색상 변경 (회전한다는 느낌을 주기 위함, 임시 코드)
+			if (_nWall == 1)
+			{
+				obj.renderer.material.color = Color.green;
+			}
+			else if (_nWall == 2)
+			{
+				obj.renderer.material.color = Color.yellow;
+			}
+			else if (_nWall == 3)
+			{
+				obj.renderer.material.color = Color.gray;
+			}
 		}
 
 		// 아이템 부모 면 설정
@@ -700,9 +729,11 @@ public class PlatformManager : MonoBehaviour
 				itemArray[_nWall, _nIndex].localPosition = _v3Pos;
 			}
 
-			int nRegenIndex = Random.Range(0, itemMaterials.Length);
+			//int nRegenIndex = Random.Range(0, itemMaterials.Length);
+			//obj.renderer.material = itemMaterials[nRegenIndex];
 
-			obj.renderer.material = itemMaterials[nRegenIndex];
+			// 아이템 색상 변경 (벽면 색상 변경으로 인하여 아이템 색상 변경, 임시 코드)
+			obj.renderer.material.color = Color.magenta;
 		}
 	}
 }

@@ -24,7 +24,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!114 &11400000
@@ -52,7 +52,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 90}
   - {x: 0, y: 0, z: 180}
   minSize: {x: 0, y: .00100000005, z: 1}
-  maxSize: {x: 4, y: .00100000005, z: 1}
+  maxSize: {x: 4, y: .00100000005, z: 2}
   roadMaterials: {fileID: 2100000, guid: 671bf1c318a95534da920f2cce27c38b, type: 2}
   trapMaterials:
   - {fileID: 2100000, guid: 205f40975c269ab42bf19f3e0fad6ec9, type: 2}
@@ -69,7 +69,8 @@ MonoBehaviour:
   ItemObject: {fileID: 0}
   itemMaterials:
   - {fileID: 2100000, guid: 0113ba2679191a24c8a0ba8ca84dc839, type: 2}
-  ItemRate: 20
+  - {fileID: 2100000, guid: 0113ba2679191a24c8a0ba8ca84dc839, type: 2}
+  ItemRate: 15
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

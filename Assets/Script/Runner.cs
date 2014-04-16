@@ -37,7 +37,7 @@ public class Runner : MonoBehaviour
 	public float jumpPower = 7;	///< 캐릭터 점프 강도
 
 	public float deadPosY = -20;	///< 캐릭터 사망 처리 y좌표
-	public int touchType = 1;	///< 모바일 조작 방식 옵션 (0 : 터치유지 이동, 1 : 좌측 터치 이동 / 우측 터치 점프)
+	public int touchType = 0;	///< 모바일 조작 방식 옵션 (0 : 터치유지 이동, 1 : 좌측 터치 이동 / 우측 터치 점프)
 	
 	public GUIText guitext;
 	public GUIText guitext2;
@@ -50,7 +50,9 @@ public class Runner : MonoBehaviour
 	private Vector3 startPosition;	///< 캐릭터 게임 시작 위치
 	private float fCameraRot = 0;	///< 카메라 회전 각도
 
+#if UNITY_ANDROID
 	private float fHorizontal = 0f;	///< 캐릭터 좌 / 우 이동 (x > 0 : 우측 / x < 0 : 좌측)
+#endif
 
 	// Use this for initialization
 	void Start ()
@@ -154,6 +156,7 @@ public class Runner : MonoBehaviour
 	@see 
 	@warning 
 	*/
+	//IEnumerator OnCollisionEnter(Collision col)
 	public void OnCollisionEnter(Collision col)
 	{
 		guitext2.text = "wallpos : " + col.gameObject.transform.localPosition + " now bottom : " + LayerMask.LayerToName(col.gameObject.layer);
@@ -174,8 +177,13 @@ public class Runner : MonoBehaviour
 			//runSpeed = 0;
 			
 			int[] nLayer = {oldLayer, col.gameObject.layer};
+			
+			// 슬로우 효과
+			//Time.timeScale = 0.5f;
+			
 			//col.gameObject.SendMessage("ApplyPlatTurn", nLayer, SendMessageOptions.DontRequireReceiver);
 			GameObject.Find("PlatformManager").SendMessage("ApplyPlatTurn", nLayer, SendMessageOptions.RequireReceiver);
+			//PlatformManager.turnLayer = nLayer;
 			Vector3 fixPos = transform.localPosition;
 
 			// 회전 이후 벽면 충돌로 인한 무한 회전 걸림 방지를 위해서 x좌표 보정
@@ -201,6 +209,9 @@ public class Runner : MonoBehaviour
 
 			transform.localPosition = fixPos;
 			runSpeed = oldRunSpeed;
+
+			// 슬로우 효과 원복
+			//Time.timeScale = 1.0f;
 
 			turnCount++;
 		}
@@ -262,7 +273,7 @@ public class Runner : MonoBehaviour
 		
 		transform.localScale = scale;
 
-		//guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " locpos : " + transform.localPosition + " gbpos : " + transform.position;
+		guitext.text = "runSpeed : " + runSpeed + " Difficulty : " + PlatformManager.platformDifficulty + " locpos : " + transform.localPosition + " gbpos : " + transform.position;
 
 #if UNITY_STANDALONE_WIN
 		// 좌우 키 입력
